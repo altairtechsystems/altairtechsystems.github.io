@@ -1,274 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Altair Tech & Systems</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: #0a1b2e;
-      color: #fff;
-      display: flex;
-    }
-
-    .sidebar {
-      width: 260px;
-      background-color: #081423;
-      height: 100vh;
-      position: fixed;
-      left: 0;
-      top: 0;
-      padding-top: 40px;
-      box-shadow: 4px 0 12px rgba(0,0,0,0.4);
-    }
-    .sidebar h2 { text-align: center; margin-bottom: 40px; font-weight: 700; cursor: pointer; }
-    .sidebar a { display: block; padding: 18px 30px; color: #c8d7ef; text-decoration: none; font-size: 1.1em; transition: 0.3s; }
-    .sidebar a:hover { 
-      background: linear-gradient(90deg, #123055, #1f6feb);
-      color: #fff; 
-      transform: translateX(5px);
-    }
-
-    .main { margin-left: 260px; width: calc(100% - 260px); padding: 40px; }
-
-    section {
-      margin-bottom: 120px;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .hero {
-      background: url("https://naturabenesserecultura.it/wp-content/uploads/2024/09/carta_topografica_12.jpg") center/cover no-repeat;
-      height: 480px;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      padding-left: 40px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-      transition: transform 0.3s;
-    }
-    .hero:hover {
-      transform: scale(1.02);
-    }
-    .hero h1 { font-size: 3em; font-weight: 700; max-width: 600px; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); }
-
-    .button {
-      background: linear-gradient(135deg, #1f6feb, #3b82f6);
-      border: none;
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1.1em;
-      transition: 0.3s;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .button:hover {
-      background: linear-gradient(135deg, #3b82f6, #1f6feb);
-      transform: scale(1.05);
-    }
-
-    .card-container, .component-card-container, .ai-card-container, .team-card-container { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-      gap: 30px; 
-    }
-    .card, .component-card, .ai-card, .team-card { 
-      background-color: #102137; 
-      padding: 20px; 
-      border-radius: 12px; 
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3); 
-      text-align: center; 
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .card:hover, .component-card:hover, .ai-card:hover, .team-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-    }
-    .card img, .component-card img, .ai-card img, .team-card img { width: 80%; border-radius: 10px; margin-bottom: 15px; }
-
-    input, textarea { width: 100%; padding: 12px; margin-top: 10px; border-radius: 6px; border: none; }
-
-    .download-btn { 
-      background: linear-gradient(135deg, #34a0ff, #1f6feb); 
-      padding: 12px 20px; 
-      display: inline-block; 
-      border-radius: 6px; 
-      margin-top: 20px; 
-      text-decoration: none; 
-      color: #fff; 
-      transition: transform 0.3s, background 0.3s;
-    }
-    .download-btn:hover {
-      background: linear-gradient(135deg, #1f6feb, #34a0ff);
-      transform: scale(1.05);
-    }
-
-    /* Mobile responsive */
-    @media (max-width: 768px) {
-      body {
-        display: block; /* Disattiva il flex per mobile */
-      }
-
-      .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-        box-shadow: none;
-        padding-top: 20px;
-      }
-
-      #menu-links {
-        display: none; /* Nascondi menu di default */
-        flex-direction: column;
-        background-color: #081423;
-        border-radius: 8px;
-        margin-top: 10px;
-      }
-
-      #menu-links a {
-        padding: 12px;
-        text-align: center;
-        font-size: 1em;
-      }
-
-      .sidebar h2 {
-        cursor: pointer;
-      }
-
-      .main {
-        margin-left: 0;
-        width: 100%;
-        padding: 20px;
-      }
-
-      .hero {
-        height: 300px;
-        padding-left: 20px;
-      }
-
-      .hero h1 {
-        font-size: 2em;
-        max-width: 100%;
-      }
-
-      .card-container, 
-      .component-card-container, 
-      .ai-card-container, 
-      .team-card-container {
-        grid-template-columns: 1fr; /* Una colonna su mobile */
-        gap: 20px;
-      }
-
-      .card img, .component-card img, .ai-card img, .team-card img {
-        width: 100%;
-      }
-
-      /* Nascondi tutte le sezioni tranne quella attiva */
-      .main section {
-        display: none;
-      }
-      .main section.active {
-        display: block;
-      }
-    }
-  </style>
-</head>
-<body>
-
-<div class="sidebar">
-  <h2 id="menu-toggle">ALTΛIR &#9776;</h2>
-  <div id="menu-links">
-    <a href="#home" data-section="home">Home</a>
-    <a href="#chi-siamo" data-section="chi-siamo">Chi Siamo</a>
-    <a href="#neurowing" data-section="neurowing">Neurowing</a>
-    <a href="#specifiche" data-section="specifiche">Scheda Tecnica</a>
-    <a href="#componenti" data-section="componenti">Componentistica</a>
-    <a href="#ai" data-section="ai">AI Integrata</a>
-    <a href="#team" data-section="team">Team</a>
-    <a href="#contatti" data-section="contatti">Contatti</a>
-  </div>
-</div>
-
-<div class="main">
-  <!-- Le tue sezioni restano identiche -->
-  <section id="home" class="hero">
-    <div>
-      <h1>Neurowing. Tecnologia oltre i confini.</h1>
-      <a href="https://www.instagram.com/altairtechsystems/" class="button">Scopri il Progetto</a>
-    </div>
-  </section>
-
-  <section id="chi-siamo">
-    <h2>Chi Siamo</h2>
-    <p>Altair Tech & Systems sviluppa piattaforme UAV professionali dedicate a missioni ISR, SAR, monitoraggio ambientale, supporto tattico e comunicazioni avanzate. Combiniamo ingegneria aeronautica, sensoristica di ultima generazione e sistemi di controllo autonomi per creare soluzioni affidabili, modulari e operative in scenari complessi. La nostra visione è portare le operazioni unmanned a un livello superiore, garantendo efficienza, precisione e resilienza anche nelle condizioni più difficili.</p>
-  </section>
-
-  <!-- Mantieni tutte le altre sezioni così come le hai già scritte... -->
-  <!-- neurowing, specifiche, componenti, ai, team, contatti -->
-
-</div>
-
-<script>
-  // Animazioni scroll desktop
-  const sections = document.querySelectorAll('section');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.2 });
-  sections.forEach(section => observer.observe(section));
-
-  // Menu a tendina mobile e navigazione a pagina singola
-  const menuToggle = document.getElementById('menu-toggle');
-  const menuLinks = document.getElementById('menu-links');
-  const allSections = document.querySelectorAll('.main section');
-
-  // Toggle menu a tendina
-  menuToggle.addEventListener('click', () => {
-    menuLinks.style.display = (menuLinks.style.display === 'block') ? 'none' : 'block';
-  });
-
-  // Mostra solo la sezione selezionata
-  menuLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const target = link.dataset.section;
-
-      allSections.forEach(sec => {
-        if(sec.id === target){
-          sec.classList.add('active');
-        } else {
-          sec.classList.remove('active');
-        }
-      });
-
-      // Chiudi il menu dopo selezione su mobile
-      if(window.innerWidth <= 768) menuLinks.style.display = 'none';
-    });
-  });
-
-  // Mostra Home di default su mobile
-  if(window.innerWidth <= 768){
-    document.getElementById('home').classList.add('active');
-  }
-</script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="it">
-<head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Altair Tech & Systems</title>
@@ -292,15 +24,31 @@ body {
   padding-top: 40px;
   box-shadow: 4px 0 12px rgba(0,0,0,0.4);
 }
-.sidebar h2 { text-align: center; margin-bottom: 40px; font-weight: 700; cursor: pointer; }
-.sidebar a { display: block; padding: 18px 30px; color: #c8d7ef; text-decoration: none; font-size: 1.1em; transition: 0.3s; }
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.sidebar a {
+  display: block;
+  padding: 18px 30px;
+  color: #c8d7ef;
+  text-decoration: none;
+  font-size: 1.1em;
+  transition: 0.3s;
+}
 .sidebar a:hover { 
   background: linear-gradient(90deg, #123055, #1f6feb);
   color: #fff; 
   transform: translateX(5px);
 }
 
-.main { margin-left: 260px; width: calc(100% - 260px); padding: 40px; }
+.main {
+  margin-left: 260px;
+  width: calc(100% - 260px);
+  padding: 40px;
+}
 
 section {
   margin-bottom: 120px;
@@ -390,8 +138,6 @@ input, textarea { width: 100%; padding: 12px; margin-top: 10px; border-radius: 6
   .hero h1 { font-size: 2em; max-width: 100%; }
   .card-container, .component-card-container, .ai-card-container, .team-card-container { grid-template-columns: 1fr; gap: 20px; }
   .card img, .component-card img, .ai-card img, .team-card img { width: 100%; }
-  .main section { display: none; }
-  .main section.active { display: block; }
 }
 </style>
 </head>
@@ -400,80 +146,78 @@ input, textarea { width: 100%; padding: 12px; margin-top: 10px; border-radius: 6
 <div class="sidebar">
   <h2 id="menu-toggle">ALTΛIR &#9776;</h2>
   <div id="menu-links">
-    <a href="#home" data-section="home">Home</a>
-    <a href="#chi-siamo" data-section="chi-siamo">Chi Siamo</a>
-    <a href="#neurowing" data-section="neurowing">Neurowing</a>
-    <a href="#specifiche" data-section="specifiche">Scheda Tecnica</a>
-    <a href="#componenti" data-section="componenti">Componentistica</a>
-    <a href="#ai" data-section="ai">AI Integrata</a>
-    <a href="#team" data-section="team">Team</a>
-    <a href="#contatti" data-section="contatti">Contatti</a>
+    <a href="#home">Home</a>
+    <a href="#chi-siamo">Chi Siamo</a>
+    <a href="#neurowing">Neurowing</a>
+    <a href="#specifiche">Scheda Tecnica</a>
+    <a href="#componenti">Componentistica</a>
+    <a href="#ai">AI Integrata</a>
+    <a href="#team">Team</a>
+    <a href="#contatti">Contatti</a>
   </div>
 </div>
 
 <div class="main">
-
-<!-- Sezioni complete -->
-<section id="home" class="hero">
-  <div>
-    <h1>Neurowing. Tecnologia oltre i confini.</h1>
-    <a href="https://www.instagram.com/altairtechsystems/" class="button">Scopri il Progetto</a>
-  </div>
-</section>
-
-<section id="chi-siamo">
-  <h2>Chi Siamo</h2>
-  <p>Altair Tech & Systems sviluppa piattaforme UAV professionali dedicate a missioni ISR, SAR, monitoraggio ambientale, supporto tattico e comunicazioni avanzate. Combiniamo ingegneria aeronautica, sensoristica di ultima generazione e sistemi di controllo autonomi per creare soluzioni affidabili, modulari e operative in scenari complessi. La nostra visione è portare le operazioni unmanned a un livello superiore, garantendo efficienza, precisione e resilienza anche nelle condizioni più difficili.</p>
-</section>
-
-<section id="neurowing">
-  <h2>Neurowing — Il Primo Progetto Altair</h2>
-  <div class="card-container">
-    <!-- Inserisci qui tutte le card come nel tuo codice originale -->
-  </div>
-</section>
-
-<section id="specifiche">
-  <h2>Scheda Tecnica</h2>
-  <p>Il Neurowing integra sensori avanzati, sistemi di comunicazione ridondati e hardware di bordo di livello professionale.</p>
-  <a class="download-btn" href="C:\Users\Antondokaj\Downloads\Specifiche Tecniche Neurowing.pdf" download>Scarica Scheda Tecnica</a>
-</section>
-
-<section id="componenti">
-  <h2>Componentistica & Sensoristica</h2>
-  <div class="component-card-container">
-    <!-- Componenti originali -->
-  </div>
-</section>
-
-<section id="ai">
-  <h2>Implementazione AI</h2>
-  <p>Neurowing integra algoritmi di intelligenza artificiale avanzata per missioni autonome, analisi dati in tempo reale e supporto decisionale intelligente.</p>
-  <div class="ai-card-container">
-    <!-- Card AI originali -->
-  </div>
-</section>
-
-<section id="team">
-  <h2>Team</h2>
-  <div class="team-card-container">
-    <div class="team-card">
-      <h3>Antonio Ndokaj</h3>
-      <p>CEO & Capoprogetto</p>
-      <p>Email: <a href="mailto:antonio.ndokajj@gmail.com" style="color:#4da3ff;">antonio.ndokajj@gmail.com</a></p>
+  <!-- Sezioni complete -->
+  <section id="home" class="hero">
+    <div>
+      <h1>Neurowing. Tecnologia oltre i confini.</h1>
+      <a href="https://www.instagram.com/altairtechsystems/" class="button">Scopri il Progetto</a>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="contatti">
-  <h2>Contatti</h2>
-  <a class="button" href="mailto:altairtechsytems@gmail.com" style="color:4da3ff">Email</a>
-  <p>Email: <a href="mailto:altairtechsytems@gmail.com" style="color:#4da3ff;">altairtechsytems@gmail.com</a></p>
-  <a class="button" href="tel:+39 377 450 1917" style="color:4da3ff">Tel</a>
-  <p>Telefono: <a href="tel:+393774501917" style="color:#4da3ff;">+39 377 450 1917</a></p>
-  <p>Ufficio: Sede da destinarsi</p>
-</section>
+  <section id="chi-siamo">
+    <h2>Chi Siamo</h2>
+    <p>Altair Tech & Systems sviluppa piattaforme UAV professionali dedicate a missioni ISR, SAR, monitoraggio ambientale, supporto tattico e comunicazioni avanzate. Combiniamo ingegneria aeronautica, sensoristica di ultima generazione e sistemi di controllo autonomi per creare soluzioni affidabili, modulari e operative in scenari complessi. La nostra visione è portare le operazioni unmanned a un livello superiore, garantendo efficienza, precisione e resilienza anche nelle condizioni più difficili.</p>
+  </section>
 
+  <section id="neurowing">
+    <h2>Neurowing — Il Primo Progetto Altair</h2>
+    <div class="card-container">
+      <!-- Tutte le card originali -->
+    </div>
+  </section>
+
+  <section id="specifiche">
+    <h2>Scheda Tecnica</h2>
+    <p>Il Neurowing integra sensori avanzati, sistemi di comunicazione ridondati e hardware di bordo di livello professionale.</p>
+    <a class="download-btn" href="C:\Users\Antondokaj\Downloads\Specifiche Tecniche Neurowing.pdf" download>Scarica Scheda Tecnica</a>
+  </section>
+
+  <section id="componenti">
+    <h2>Componentistica & Sensoristica</h2>
+    <div class="component-card-container">
+      <!-- Componenti originali -->
+    </div>
+  </section>
+
+  <section id="ai">
+    <h2>Implementazione AI</h2>
+    <p>Neurowing integra algoritmi di intelligenza artificiale avanzata per missioni autonome, analisi dati in tempo reale e supporto decisionale intelligente.</p>
+    <div class="ai-card-container">
+      <!-- Card AI originali -->
+    </div>
+  </section>
+
+  <section id="team">
+    <h2>Team</h2>
+    <div class="team-card-container">
+      <div class="team-card">
+        <h3>Antonio Ndokaj</h3>
+        <p>CEO & Capoprogetto</p>
+        <p>Email: <a href="mailto:antonio.ndokajj@gmail.com" style="color:#4da3ff;">antonio.ndokajj@gmail.com</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contatti">
+    <h2>Contatti</h2>
+    <a class="button" href="mailto:altairtechsytems@gmail.com" style="color:4da3ff">Email</a>
+    <p>Email: <a href="mailto:altairtechsytems@gmail.com" style="color:#4da3ff;">altairtechsytems@gmail.com</a></p>
+    <a class="button" href="tel:+39 377 450 1917" style="color:4da3ff">Tel</a>
+    <p>Telefono: <a href="tel:+393774501917" style="color:#4da3ff;">+39 377 450 1917</a></p>
+    <p>Ufficio: Sede da destinarsi</p>
+  </section>
 </div>
 
 <script>
@@ -488,36 +232,13 @@ input, textarea { width: 100%; padding: 12px; margin-top: 10px; border-radius: 6
   }, { threshold: 0.2 });
   sections.forEach(section => observer.observe(section));
 
-  // Menu a tendina mobile e navigazione a pagina singola
+  // Menu a tendina mobile
   const menuToggle = document.getElementById('menu-toggle');
   const menuLinks = document.getElementById('menu-links');
-  const allSections = document.querySelectorAll('.main section');
 
   menuToggle.addEventListener('click', () => {
     menuLinks.style.display = (menuLinks.style.display === 'block') ? 'none' : 'block';
   });
-
-  menuLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const target = link.dataset.section;
-
-      allSections.forEach(sec => {
-        if(sec.id === target){
-          sec.classList.add('active');
-        } else {
-          sec.classList.remove('active');
-        }
-      });
-
-      if(window.innerWidth <= 768) menuLinks.style.display = 'none';
-    });
-  });
-
-  // Mostra Home di default su mobile
-  if(window.innerWidth <= 768){
-    document.getElementById('home').classList.add('active');
-  }
 </script>
 
 </body>
