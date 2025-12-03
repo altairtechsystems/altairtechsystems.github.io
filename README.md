@@ -1,9 +1,5 @@
-<!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Altair Tech & Systems</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -11,8 +7,13 @@
       font-family: 'Roboto', sans-serif;
       background-color: #0a1b2e;
       color: #fff;
+      display: flex;   body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #0a1b2e;
+      color: #fff;
       display: flex;
-    }
+  }
     .sidebar {
       width: 260px;
       background-color: #081423;
