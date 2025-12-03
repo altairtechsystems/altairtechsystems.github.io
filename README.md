@@ -7,7 +7,6 @@
   <title>Altair Tech & Systems</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
-    /* RESET E BASE */
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
@@ -16,9 +15,6 @@
       display: flex;
     }
 
-    a { text-decoration: none; }
-
-    /* SIDEBAR */
     .sidebar {
       width: 260px;
       background-color: #081423;
@@ -29,84 +25,25 @@
       padding-top: 40px;
       box-shadow: 4px 0 12px rgba(0,0,0,0.4);
     }
-    .sidebar h2 { text-align: center; margin-bottom: 40px; font-weight: 700; font-size: 1.8em; }
-    .sidebar a { display: block; padding: 18px 30px; color: #c8d7ef; font-size: 1.1em; transition: 0.3s; }
+    .sidebar h2 { text-align: center; margin-bottom: 40px; font-weight: 700; }
+    .sidebar a { display: block; padding: 18px 30px; color: #c8d7ef; text-decoration: none; font-size: 1.1em; transition: 0.3s; }
     .sidebar a:hover { background-color: #123055; color: #fff; }
 
-    /* MAIN CONTENT */
     .main { margin-left: 260px; width: calc(100% - 260px); padding: 40px; }
-
-    section { 
-      margin-bottom: 80px; 
-      animation: fadeIn 1.2s ease forwards; 
-      opacity: 0; 
-    }
+    section { margin-bottom: 120px; animation: fadeIn 1.2s ease forwards; opacity: 0; }
     @keyframes fadeIn { from {opacity: 0; transform: translateY(40px);} to {opacity: 1; transform: translateY(0);} }
 
-    /* HERO */
-    .hero {
-      position: relative;
-      min-height: 60vh;
-      max-height: 80vh;
-      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("https://naturabenesserecultura.it/wp-content/uploads/2024/09/carta_topografica_12.jpg") center/cover no-repeat;
-      border-radius: 14px;
-      display: flex; 
-      align-items: center;
-      padding-left: 40px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    }
-    .hero h1 { 
-      font-size: 2.8em; 
-      font-weight: 700; 
-      max-width: 600px; 
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.8); 
-      line-height: 1.2;
-    }
-    .button { 
-      margin-top: 20px; 
-      padding: 12px 28px; 
-      background-color: #1f6feb; 
-      border: none; 
-      color: white; 
-      border-radius: 8px; 
-      cursor: pointer; 
-      font-size: 1.1em; 
-      transition: 0.3s; 
-      display: inline-block;
-    }
+    .hero { background: url("https://naturabenesserecultura.it/wp-content/uploads/2024/09/carta_topografica_12.jpg") center/cover no-repeat; height: 480px; border-radius: 14px; display: flex; align-items: center; padding-left: 40px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+    .hero h1 { font-size: 3em; font-weight: 700; max-width: 600px; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); }
+    .button { margin-top: 20px; padding: 12px 28px; background-color: #1f6feb; border: none; color: white; border-radius: 8px; cursor: pointer; font-size: 1.1em; transition: 0.3s; text-decoration: none; display: inline-block; }
     .button:hover { background-color: #3b82f6; }
 
-    /* CARDS */
-    .card-container, .component-card-container, .ai-card-container, .team-card-container {
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
-      gap: 30px; 
-    }
-    .card, .component-card, .ai-card, .team-card { 
-      background-color: #102137; 
-      padding: 20px; 
-      border-radius: 12px; 
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3); 
-      text-align: center; 
-    }
-    .card img, .component-card img, .ai-card img, .team-card img { 
-      width: 100%; 
-      max-width: 220px; 
-      border-radius: 10px; 
-      margin-bottom: 15px; 
-    }
+    .card-container, .component-card-container, .ai-card-container, .team-card-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+    .card, .component-card, .ai-card, .team-card { background-color: #102137; padding: 20px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.3); text-align: center; }
+    .card img, .component-card img, .ai-card img, .team-card img { width: 80%; border-radius: 10px; margin-bottom: 15px; }
 
-    /* INPUT E BOTTONI */
     input, textarea { width: 100%; padding: 12px; margin-top: 10px; border-radius: 6px; border: none; }
     .download-btn { background-color: #34a0ff; padding: 12px 20px; display: inline-block; border-radius: 6px; margin-top: 20px; text-decoration: none; color: #fff; }
-
-    /* TESTO */
-    h2 { color: #e0e7ff; margin-bottom: 20px; }
-    p { font-size: 1.15em; line-height: 1.6; }
-
-    /* LINK */
-    a { color: #4da3ff; transition: 0.3s; }
-    a:hover { color: #81b3ff; }
   </style>
 </head>
 <body>
@@ -156,7 +93,7 @@
   <section id="specifiche">
     <h2>Scheda Tecnica</h2>
     <p>Il Neurowing integra sensori avanzati, sistemi di comunicazione ridondati e hardware di bordo di livello professionale.</p>
-    <a class="download-btn" href="Specifiche Tecniche Neurowing.pdf" download>Scarica Scheda Tecnica</a>
+    <a class="download-btn" href="C:\Users\Antondokaj\Downloads\Specifiche Tecniche Neurowing.pdf" download>Scarica Scheda Tecnica</a>
   </section>
 
   <section id="componenti">
@@ -224,9 +161,9 @@
 
   <section id="contatti">
     <h2>Contatti</h2>
-    <p>Email: <a href="mailto:altairtechsytems@gmail.com">altairtechsytems@gmail.com</a></p>
-    <p>Telefono: <a href="tel:+393774501917">+39 377 450 1917</a></p>
-    <p>Ufficio: Sede da destinarsi</p>
+    <p>Email: <a href="mailto:altairtechsytems@gmail.com" style="color:#4da3ff;">altairtechsytems@gmail.com</a></p>
+    <p>Telefono: <a href="tel:+393774501917" style="color:#4da3ff;">+39 377 450 1917</a></p>
+    <p>Ufficio: Sede da desitinarsi</p>
   </section>
 
   <section id="team">
@@ -235,12 +172,15 @@
       <div class="team-card">
         <h3>Antonio Ndokaj</h3>
         <p>CEO & Capoprogetto</p>
-        <p>Email: <a href="mailto:antonio.ndokajj@gmail.com">antonio.ndokajj@gmail.com</a></p>
+        <p>Email: <a href="mailto:antonio.ndokajj@gmail.com" style="color:#4da3ff;">antonio.ndokajj@gmail.com</a></p>
       </div>
     </div>
   </section>
 
 </div>
+
+</body>
+</html>
 
 </body>
 </html>
