@@ -14,7 +14,6 @@
       color: #fff;
       display: flex;
     }
-
     .sidebar {
       width: 260px;
       background-color: #081423;
@@ -29,20 +28,20 @@
     .sidebar a { display: block; padding: 18px 30px; color: #c8d7ef; text-decoration: none; font-size: 1.1em; transition: 0.3s; }
     .sidebar a:hover { background-color: #123055; color: #fff; }
 
-    .main { margin-left: 260px; width: calc(100% - 260px); padding: 40px; }
+  .main { margin-left: 260px; width: calc(100% - 260px); padding: 40px; }
     section { margin-bottom: 120px; animation: fadeIn 1.2s ease forwards; opacity: 0; }
     @keyframes fadeIn { from {opacity: 0; transform: translateY(40px);} to {opacity: 1; transform: translateY(0);} }
 
-    .hero { background: url("https://naturabenesserecultura.it/wp-content/uploads/2024/09/carta_topografica_12.jpg") center/cover no-repeat; height: 480px; border-radius: 14px; display: flex; align-items: center; padding-left: 40px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+  .hero { background: url("https://naturabenesserecultura.it/wp-content/uploads/2024/09/carta_topografica_12.jpg") center/cover no-repeat; height: 480px; border-radius: 14px; display: flex; align-items: center; padding-left: 40px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
     .hero h1 { font-size: 3em; font-weight: 700; max-width: 600px; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); }
     .button { margin-top: 20px; padding: 12px 28px; background-color: #1f6feb; border: none; color: white; border-radius: 8px; cursor: pointer; font-size: 1.1em; transition: 0.3s; text-decoration: none; display: inline-block; }
     .button:hover { background-color: #3b82f6; }
 
-    .card-container, .component-card-container, .ai-card-container, .team-card-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+  .card-container, .component-card-container, .ai-card-container, .team-card-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
     .card, .component-card, .ai-card, .team-card { background-color: #102137; padding: 20px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.3); text-align: center; }
     .card img, .component-card img, .ai-card img, .team-card img { width: 80%; border-radius: 10px; margin-bottom: 15px; }
 
-    input, textarea { width: 100%; padding: 12px; margin-top: 10px; border-radius: 6px; border: none; }
+  input, textarea { width: 100%; padding: 12px; margin-top: 10px; border-radius: 6px; border: none; }
     .download-btn { background-color: #34a0ff; padding: 12px 20px; display: inline-block; border-radius: 6px; margin-top: 20px; text-decoration: none; color: #fff; }
   </style>
 </head>
