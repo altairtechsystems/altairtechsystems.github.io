@@ -111,7 +111,52 @@
       background: linear-gradient(135deg, #1f6feb, #34a0ff);
       transform: scale(1.05);
     }
+    /* Mobile responsive */
+ @media (max-width: 768px) {
+  body {
+    display: block; /* Disattiva il flex per mobile */
+  }
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    box-shadow: none;
+    padding-top: 20px;
+  }
 
+  .sidebar a {
+    padding: 12px 20px;
+    text-align: center;
+  }
+
+  .main {
+    margin-left: 0;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .hero {
+    height: 300px;
+    padding-left: 20px;
+  }
+
+  .hero h1 {
+    font-size: 2em;
+    max-width: 100%;
+  }
+
+  .card-container, 
+  .component-card-container, 
+  .ai-card-container, 
+  .team-card-container {
+    grid-template-columns: 1fr; /* Una sola colonna su mobile */
+    gap: 20px;
+  }
+
+  .card img, .component-card img, .ai-card img, .team-card img {
+    width: 100%;
+  }
+}
   </style>
 </head>
 <body>
