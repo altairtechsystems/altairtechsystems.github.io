@@ -29,44 +29,9 @@
     .main { margin-left: 260px; width: calc(100% - 260px); padding: 40px; }
     section { margin-bottom: 120px; animation: fadeIn 1.2s ease forwards; opacity: 0; }
     @keyframes fadeIn { from {opacity: 0; transform: translateY(40px);} to {opacity: 1; transform: translateY(0);} }
-    /* Hero aggiornato */
-    .hero {
-      background: url("https://naturabenesserecultura.it/wp-content/uploads/2024/09/carta_topografica_12.jpg") center/cover no-repeat;
-      height: 480px;
-      border-radius: 14px;
-      display: flex;
-      align-items: flex-start; /* titolo in alto */
-      justify-content: flex-start;
-      padding: 40px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    }
-    .hero-content {
-      display: flex;
-      flex-direction: column;
-      gap: 20px; /* spazio tra titolo e pulsante */
-    }
-    .hero h1 {
-      margin: 0;
-      font-size: 3em;
-      font-weight: 700;
-      max-width: 600px;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
-    }
-    .hero .button {
-      width: fit-content; /* pulsante non allarga tutto il div */
-    }
-    .button { 
-      padding: 12px 28px; 
-      background-color: #1f6feb; 
-      border: none; 
-      color: white; 
-      border-radius: 8px; 
-      cursor: pointer; 
-      font-size: 1.1em; 
-      transition: 0.3s; 
-      text-decoration: none; 
-      display: inline-block; 
-    }
+    .hero { background: url("https://naturabenesserecultura.it/wp-content/uploads/2024/09/carta_topografica_12.jpg") center/cover no-repeat; height: 480px; border-radius: 14px; display: flex; align-items: center; padding-left: 40px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+    .hero h1 { font-size: 3em; font-weight: 700; max-width: 600px; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); }
+    .button { margin-top: 20px; padding: 12px 28px; background-color: #1f6feb; border: none; color: white; border-radius: 8px; cursor: pointer; font-size: 1.1em; transition: 0.3s; text-decoration: none; display: inline-block; }
     .button:hover { background-color: #3b82f6; }
     .card-container, .component-card-container, .ai-card-container, .team-card-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
     .card, .component-card, .ai-card, .team-card { background-color: #102137; padding: 20px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.3); text-align: center; }
@@ -91,9 +56,8 @@
 
 <div class="main">
 
-  <!-- Hero aggiornata -->
   <section id="home" class="hero">
-    <div class="hero-content">
+    <div>
       <h1>Neurowing. Tecnologia oltre i confini.</h1>
       <a href="presentazione_neurowing.html" class="button">Scopri il Progetto</a>
     </div>
@@ -120,10 +84,96 @@
     </div>
   </section>
 
-  <!-- resto della pagina rimane uguale -->
-  <!-- ... tutte le altre sezioni ... -->
+  <section id="specifiche">
+    <h2>Scheda Tecnica</h2>
+    <p>Il Neurowing integra sensori avanzati, sistemi di comunicazione ridondati e hardware di bordo di livello professionale.</p>
+    <a class="download-btn" href="C:\Users\Antondokaj\Downloads\Specifiche Tecniche Neurowing.pdf" download>Scarica Scheda Tecnica</a>
+  </section>
+
+  <section id="componenti">
+    <h2>Componentistica & Sensoristica</h2>
+    <div class="component-card-container">
+      <div class="component-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZNrTpXMbY3WC5ArUhub66vkfv8JH-9B3rdw&s" alt="FLIR Boson 640">
+        <h3>Camera FLIR Boson 640</h3>
+        <p>Rilevamento termico avanzato per ISR e missioni SAR.</p>
+      </div>
+      <div class="component-card">
+        <img src="https://www.3dtarget.it/eu/images/velodyne/pucklite_01.jpg" alt="LIDAR Velodyne Puck">
+        <h3>LIDAR Velodyne Puck</h3>
+        <p>Rilevamento 3D ad alta precisione per mappature e navigazione autonoma.</p>
+      </div>
+      <div class="component-card">
+        <img src="https://cdn.prod.website-files.com/6365084f1295f38fadbf8824/6708de219f86205cea11bb02_jammer.jpg" alt="Jammer RF">
+        <h3>CNT SIGINT & Jammer RF</h3>
+        <p>Intercettazione segnali e contromisure elettroniche avanzate.</p>
+      </div>
+      <div class="component-card">
+        <img src="https://aerium.co.il/cdn/shop/files/New_Project.png?v=1755022327&width=1080" alt="Cube Orange">
+        <h3>Autopilota Cube Orange</h3>
+        <p>Controllo di volo preciso e supporto missione semi-autonoma.</p>
+      </div>
+      <div class="component-card">
+        <img src="https://static4.arrow.com/-/media/arrow/images/miscellaneous/jetson-nano_3qtr-front_left-1-3.jpg" alt="Jetson Nano">
+        <h3>NVIDIA Jetson Nano</h3>
+        <p>Companion computer per AI e analisi dati onboard.</p>
+      </div>
+      <div class="component-card">
+        <img src="https://files.tecnoblog.net/wp-content/uploads/2023/10/gps-glonass-galileo-1536x864.jpg" alt="GPS GLONASS">
+        <h3>GPS/GLONASS/GALILEO RTK</h3>
+        <p>Posizionamento preciso per navigazione e georeferenziazione.</p>
+      </div>
+      <div class="component-card">
+        <img src="https://furuno.it/assets/img/sousfamilles/IRIDIUM.jpg" alt="Comunicazioni Iridium">
+        <h3>Comunicazioni Iridium + Rete Mesh + 900MHz</h3>
+        <p>Connessione stabile in scenari remoti e complessi.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="ai">
+    <h2>Implementazione AI</h2>
+    <p>Neurowing integra algoritmi di intelligenza artificiale avanzata per missioni autonome, analisi dati in tempo reale e supporto decisionale intelligente. L'AI gestisce il tracciamento di oggetti, la pianificazione del volo ottimizzata e la gestione dei sensori complessi, garantendo precisione e adattabilità in scenari dinamici.</p>
+    <div class="ai-card-container">
+      <div class="ai-card">
+        <img src="https://www.shutterstock.com/image-vector/artificial-intelligence-icon-on-integrated-600nw-2631218413.jpg" alt="AI Core">
+        <h3>AI Core</h3>
+        <p>Elaborazione dati e decisioni autonome onboard.</p>
+      </div>
+      <div class="ai-card">
+        <img src="https://img.ai4business.it/wp-content/uploads/2017/11/13202746/Nodo-di-una-rete-neurale-artificiale.jpg" alt="Reti Neurali">
+        <h3>Reti Neurali</h3>
+        <p>Analisi predittiva e riconoscimento pattern in tempo reale.</p>
+      </div>
+      <div class="ai-card">
+        <img src="https://daaslabs.ai/blog/wp-content/uploads/2020/05/The_Era-of-Computer-Vision-Is-Here.png" alt="Computer Vision">
+        <h3>Computer Vision</h3>
+        <p>Elaborazione visiva dai sensori e ottimizzazione missione.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contatti">
+    <h2>Contatti</h2>
+    <p>Email: <a href="mailto:altairtechsytems@gmail.com" style="color:#4da3ff;">altairtechsytems@gmail.com</a></p>
+    <p>Telefono: <a href="tel:+393774501917" style="color:#4da3ff;">+39 377 450 1917</a></p>
+    <p>Ufficio: Sede da desitinarsi</p>
+  </section>
+
+  <section id="team">
+    <h2>Team</h2>
+    <div class="team-card-container">
+      <div class="team-card">
+        <h3>Antonio Ndokaj</h3>
+        <p>CEO & Capoprogetto</p>
+        <p>Email: <a href="mailto:antonio.ndokajj@gmail.com" style="color:#4da3ff;">antonio.ndokajj@gmail.com</a></p>
+      </div>
+    </div>
+  </section>
 
 </div>
 
+</body>
+</html>
 </body>
 </html>
