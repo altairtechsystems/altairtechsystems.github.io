@@ -4,7 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-     sidebar {
+     body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #0a1b2e;
+      color: #fff;
+      display: flex;
+    }
+     .sidebar {
       width: 260px;
       background-color: #081423;
       height: 100vh;
