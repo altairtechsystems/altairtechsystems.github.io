@@ -128,13 +128,15 @@ input, textarea { width: 100%; padding: 12px; margin-top: 10px; border-radius: 6
 
 /* Footer */
 footer {
-  text-align: center;
-  padding: 20px;
+  position: fixed;  /* resta sempre visibile */
+  bottom: 0;        /* attaccato al bordo inferiore */
+  left: 0;
+  width: 100%;
   background-color: #081423;
-  color: #4da3ff;
-  font-size: 0.9em;
-  position: relative;
-  margin-top: 40px;
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
 }
 
 
@@ -329,9 +331,6 @@ footer {
 
   <footer>
     © 2025 Altair Tech & Systems. Tutti i diritti riservati.
-  </footer>
-
-  <footer>
     I contenuti di questo sito,
     sono di proprietà di Altair Tech & Systems o dei rispettivi titolari 
     e sono protetti dalle leggi internazionali sul copyright.
