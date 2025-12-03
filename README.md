@@ -1,4 +1,9 @@
-
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Altair Tech & Systems</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -20,19 +25,85 @@
     }
     .sidebar h2 { text-align: center; margin-bottom: 40px; font-weight: 700; }
     .sidebar a { display: block; padding: 18px 30px; color: #c8d7ef; text-decoration: none; font-size: 1.1em; transition: 0.3s; }
-    .sidebar a:hover { background-color: #123055; color: #fff; }
+    .sidebar a:hover { 
+      background: linear-gradient(90deg, #123055, #1f6feb);
+      color: #fff; 
+      transform: translateX(5px);
+    }
     .main { margin-left: 260px; width: calc(100% - 260px); padding: 40px; }
-    section { margin-bottom: 120px; animation: fadeIn 1.2s ease forwards; opacity: 0; }
-    @keyframes fadeIn { from {opacity: 0; transform: translateY(40px);} to {opacity: 1; transform: translateY(0);} }
-    .hero { background: url("https://naturabenesserecultura.it/wp-content/uploads/2024/09/carta_topografica_12.jpg") center/cover no-repeat; height: 480px; border-radius: 14px; display: flex; align-items: center; padding-left: 40px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+    section {
+      margin-bottom: 120px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .hero {
+      background: url("https://naturabenesserecultura.it/wp-content/uploads/2024/09/carta_topografica_12.jpg") center/cover no-repeat;
+      height: 480px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      padding-left: 40px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      transition: transform 0.3s;
+    }
+    .hero:hover {
+      transform: scale(1.02);
+    }
     .hero h1 { font-size: 3em; font-weight: 700; max-width: 600px; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); }
-    .button { margin-top: 20px; padding: 12px 28px; background-color: #1f6feb; border: none; color: white; border-radius: 8px; cursor: pointer; font-size: 1.1em; transition: 0.3s; text-decoration: none; display: inline-block; }
-    .button:hover { background-color: #3b82f6; }
-    .card-container, .component-card-container, .ai-card-container, .team-card-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-    .card, .component-card, .ai-card, .team-card { background-color: #102137; padding: 20px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.3); text-align: center; }
+    .button {
+      background: linear-gradient(135deg, #1f6feb, #3b82f6);
+      border: none;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.1em;
+      transition: 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .button:hover {
+      background: linear-gradient(135deg, #3b82f6, #1f6feb);
+      transform: scale(1.05);
+    }
+    .card-container, .component-card-container, .ai-card-container, .team-card-container { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+      gap: 30px; 
+    }
+    .card, .component-card, .ai-card, .team-card { 
+      background-color: #102137; 
+      padding: 20px; 
+      border-radius: 12px; 
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3); 
+      text-align: center; 
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover, .component-card:hover, .ai-card:hover, .team-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    }
     .card img, .component-card img, .ai-card img, .team-card img { width: 80%; border-radius: 10px; margin-bottom: 15px; }
     input, textarea { width: 100%; padding: 12px; margin-top: 10px; border-radius: 6px; border: none; }
-    .download-btn { background-color: #34a0ff; padding: 12px 20px; display: inline-block; border-radius: 6px; margin-top: 20px; text-decoration: none; color: #fff; }
+    .download-btn { 
+      background: linear-gradient(135deg, #34a0ff, #1f6feb); 
+      padding: 12px 20px; 
+      display: inline-block; 
+      border-radius: 6px; 
+      margin-top: 20px; 
+      text-decoration: none; 
+      color: #fff; 
+      transition: transform 0.3s, background 0.3s;
+    }
+    .download-btn:hover {
+      background: linear-gradient(135deg, #1f6feb, #34a0ff);
+      transform: scale(1.05);
+    }
+
   </style>
 </head>
 <body>
@@ -167,6 +238,18 @@
   </section>
 
 </div>
+
+<script>
+  const sections = document.querySelectorAll('section');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+  sections.forEach(section => observer.observe(section));
+</script>
 
 </body>
 </html>
