@@ -31,8 +31,8 @@
       color: #fff; 
       transform: translateX(5px);
     }
-    .main { margin-left: 260px; width: calc(100% - 260px); padding: 40px; 
-   section {
+    .main { margin-left: 260px; width: calc(100% - 260px); padding: 40px; }
+    section {
       margin-bottom: 120px;
       opacity: 0;
       transform: translateY(40px);
