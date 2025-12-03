@@ -6,16 +6,14 @@
 <title>Altair Tech & Systems</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
+/* Reset e stili di base */
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   background-color: #0a1b2e;
   color: #fff;
-  display: flex;
-  scroll-behavior: smooth; /* smooth scroll */
 }
 
-/* Sidebar */
 .sidebar {
   width: 260px;
   background-color: #081423;
@@ -25,6 +23,7 @@ body {
   top: 0;
   padding-top: 40px;
   box-shadow: 4px 0 12px rgba(0,0,0,0.4);
+  overflow-y: auto;
 }
 .sidebar h2 {
   text-align: center;
@@ -46,28 +45,26 @@ body {
   transform: translateX(5px);
 }
 
-/* Main content */
 .main {
   margin-left: 260px;
   width: calc(100% - 260px);
   padding: 40px;
 }
 
-/* Sections */
 section {
-  margin-bottom: 120px;
+  display: none; /* Inizialmente tutte le sezioni nascoste */
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
-section.visible {
+section.active {
+  display: block;
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Hero */
 .hero {
-  background: url("https://naturabenesserecultura.it/wp-content/uploads/2024/09/carta_topografica_12.jpg") center/cover no-repeat;
+  background: url("https://naturabenesserecultura.it/wp-content/uploads/2024/09/carta_topografica_12.jpg") center/cover no-repeat fixed;
   height: 480px;
   border-radius: 14px;
   display: flex;
@@ -77,9 +74,8 @@ section.visible {
   transition: transform 0.3s;
 }
 .hero:hover { transform: scale(1.02); }
-.hero h1 { font-size: 3em; font-weight: 700; max-width: 600px; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); }
+.hero h1 { font-size: 3em; font-weight: 700; max-width: 600px; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); opacity:0; transform: translateY(20px); transition: all 1s ease-out; }
 
-/* Buttons */
 .button {
   background: linear-gradient(135deg, #1f6feb, #3b82f6);
   border: none;
@@ -90,40 +86,35 @@ section.visible {
   transition: 0.3s;
   text-decoration: none;
   display: inline-block;
+  opacity:0; transform: translateY(20px); transition: all 1s ease-out;
 }
 .button:hover {
   background: linear-gradient(135deg, #3b82f6, #1f6feb);
   transform: scale(1.05);
 }
 
-/* Card containers */
 .card-container, .component-card-container, .ai-card-container, .team-card-container { 
   display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-  gap: 30px; 
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* min-width ridotto */
+  gap: 20px; 
 }
-
-/* Cards with 3D hover */
 .card, .component-card, .ai-card, .team-card { 
   background-color: #102137; 
   padding: 20px; 
   border-radius: 12px; 
   box-shadow: 0 8px 20px rgba(0,0,0,0.3); 
   text-align: center; 
-  transition: transform 0.5s, box-shadow 0.5s, background 0.5s;
-  background: linear-gradient(135deg, #102137, #081423);
+  transition: transform 0.3s, box-shadow 0.3s, opacity 1s;
+  opacity: 0; transform: translateY(20px);
 }
-.card:hover, .component-card:hover, .ai-card:hover, .team-card:hover {
-  transform: translateY(-10px) rotateX(3deg);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-  background: linear-gradient(135deg, #1f6feb, #3b82f6);
+.card.visible, .component-card.visible, .ai-card.visible, .team-card.visible {
+  opacity:1;
+  transform: translateY(0);
 }
 .card img, .component-card img, .ai-card img, .team-card img { width: 80%; border-radius: 10px; margin-bottom: 15px; }
 
-/* Inputs */
 input, textarea { width: 100%; padding: 12px; margin-top: 10px; border-radius: 6px; border: none; }
 
-/* Download button */
 .download-btn { 
   background: linear-gradient(135deg, #34a0ff, #1f6feb); 
   padding: 12px 20px; 
@@ -133,10 +124,22 @@ input, textarea { width: 100%; padding: 12px; margin-top: 10px; border-radius: 6
   text-decoration: none; 
   color: #fff; 
   transition: transform 0.3s, background 0.3s;
+  opacity:0; transform: translateY(20px); transition: all 1s ease-out;
 }
 .download-btn:hover {
   background: linear-gradient(135deg, #1f6feb, #34a0ff);
   transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #081423;
+  color: #4da3ff;
+  font-size: 0.9em;
+  position: relative;
+  margin-top: 40px;
 }
 
 /* Mobile responsive */
@@ -159,28 +162,29 @@ input, textarea { width: 100%; padding: 12px; margin-top: 10px; border-radius: 6
 <div class="sidebar">
   <h2 id="menu-toggle">ALTΛIR &#9776;</h2>
   <div id="menu-links">
-    <a href="#home">Home</a>
-    <a href="#chi-siamo">Chi Siamo</a>
-    <a href="#neurowing">Neurowing</a>
-    <a href="#specifiche">Scheda Tecnica</a>
-    <a href="#componenti">Componentistica</a>
-    <a href="#ai">AI Integrata</a>
-    <a href="#team">Team</a>
-    <a href="#contatti">Contatti</a>
+    <a href="#home" data-page="home">Home</a>
+    <a href="#chi-siamo" data-page="chi-siamo">Chi Siamo</a>
+    <a href="#neurowing" data-page="neurowing">Neurowing</a>
+    <a href="#specifiche" data-page="specifiche">Scheda Tecnica</a>
+    <a href="#componenti" data-page="componenti">Componentistica</a>
+    <a href="#ai" data-page="ai">AI Integrata</a>
+    <a href="#team" data-page="team">Team</a>
+    <a href="#contatti" data-page="contatti">Contatti</a>
   </div>
 </div>
 
 <div class="main">
-  <!-- Sezioni complete -->
-  <section id="home" class="hero">
+  <!-- Sezioni divise in "pagine" -->
+  <section id="home" class="active hero">
     <div>
       <h1>Neurowing. Tecnologia oltre i confini.</h1>
       <a href="https://www.instagram.com/altairtechsystems/" class="button">Scopri il Progetto</a>
     </div>
   </section>
- <section id="chi-siamo">
+
+  <section id="chi-siamo">
     <h2>Chi Siamo</h2>
-    <p>Altair Tech & Systems sviluppa piattaforme UAV professionali dedicate a missioni ISR, SAR, monitoraggio ambientale, supporto tattico e comunicazioni avanzate. Combiniamo ingegneria aeronautica, sensoristica di ultima generazione e sistemi di controllo autonomi per creare soluzioni affidabili, modulari e operative in scenari complessi. La nostra visione è portare le operazioni unmanned a un livello superiore, garantendo efficienza, precisione e resilienza anche nelle condizioni più difficili.</p>
+    <p>Altair Tech & Systems sviluppa piattaforme UAV professionali dedicate a missioni ISR, SAR, monitoraggio ambientale...</p>
   </section>
 
   <section id="neurowing">
@@ -325,33 +329,55 @@ input, textarea { width: 100%; padding: 12px; margin-top: 10px; border-radius: 6
   </section>
 </div>
 
-  <!-- Tutte le altre sezioni restano uguali come nel raw code -->
+  <!-- Altre sezioni replicate qui con animazioni fade-in e struttura simile -->
 
-
-  <section>
-  <p> &copy; 2025 Altair Tech & Systems. Tutti i diritti riservati.</p> 
-  </section>
+  <footer>
+    © 2025 Altair Tech & Systems. Tutti i diritti riservati.
+  </footer>
 </div>
 
 <script>
-  // Animazioni scroll desktop
-  const sections = document.querySelectorAll('section');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('visible');
+// Menu a tendina mobile
+const menuToggle = document.getElementById('menu-toggle');
+const menuLinks = document.getElementById('menu-links');
+menuToggle.addEventListener('click', () => {
+  menuLinks.style.display = (menuLinks.style.display === 'block') ? 'none' : 'block';
+});
+
+// Gestione cambio "pagine"
+const links = document.querySelectorAll('#menu-links a');
+const sections = document.querySelectorAll('section');
+
+links.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const targetPage = link.dataset.page;
+
+    sections.forEach(sec => {
+      if(sec.id === targetPage) {
+        sec.classList.add('active');
+      } else {
+        sec.classList.remove('active');
       }
     });
-  }, { threshold: 0.2 });
-  sections.forEach(section => observer.observe(section));
 
-  // Menu a tendina mobile
-  const menuToggle = document.getElementById('menu-toggle');
-  const menuLinks = document.getElementById('menu-links');
-
-  menuToggle.addEventListener('click', () => {
-    menuLinks.style.display = (menuLinks.style.display === 'block') ? 'none' : 'block';
+    if(menuLinks.style.display === 'block') menuLinks.style.display = 'none'; // chiudi menu mobile
+    window.scrollTo({top:0, behavior:'smooth'}); // scroll top
   });
+});
+
+// Animazioni fade-in per cards e elementi
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+},{threshold:0.2});
+
+document.querySelectorAll('.card, .component-card, .ai-card, .team-card, .button, .hero h1, .download-btn').forEach(el=>{
+  observer.observe(el);
+});
 </script>
 
 </body>
