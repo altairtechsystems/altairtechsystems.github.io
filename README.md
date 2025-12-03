@@ -1,5 +1,10 @@
+
+<!DOCTYPE html>
 <html lang="it">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Altair Tech & Systems</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -7,13 +12,8 @@
       font-family: 'Roboto', sans-serif;
       background-color: #0a1b2e;
       color: #fff;
-      display: flex;   body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: #0a1b2e;
-      color: #fff;
       display: flex;
-  }
+    }
     .sidebar {
       width: 260px;
       background-color: #081423;
@@ -31,8 +31,8 @@
       color: #fff; 
       transform: translateX(5px);
     }
-    .main { margin-left: 260px; width: calc(100% - 260px); padding: 40px; }
-    section {
+    .main { margin-left: 260px; width: calc(100% - 260px); padding: 40px; 
+   section {
       margin-bottom: 120px;
       opacity: 0;
       transform: translateY(40px);
@@ -104,8 +104,9 @@
       background: linear-gradient(135deg, #1f6feb, #34a0ff);
       transform: scale(1.05);
     }
-
-  </style>
+      a { color: inherit; text-decoration: none; }
+    a:visited { color: inherit; }
+</style>
 </head>
 <body>
 
