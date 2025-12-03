@@ -12,8 +12,6 @@
       background-color: #0a1b2e;
       color: #fff;
       display: flex;
-      flex-direction: column;
-      min-height: 100vh;
     }
 
     .sidebar {
@@ -34,13 +32,13 @@
       transform: translateX(5px);
     }
 
-    .main { margin-left: 260px; width: calc(100% - 260px); padding: 40px; flex: 1; }
+    .main { margin-left: 260px; width: calc(100% - 260px); padding: 40px; }
 
     section {
       margin-bottom: 120px;
       opacity: 0;
       transform: translateY(40px);
-      transition: opacity 1s ease-out, transform 1s ease-out;
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
     section.visible {
       opacity: 1;
@@ -54,7 +52,7 @@
       display: flex;
       align-items: center;
       padding-left: 40px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
       transition: transform 0.3s;
     }
     .hero:hover {
@@ -87,13 +85,13 @@
       background-color: #102137; 
       padding: 20px; 
       border-radius: 12px; 
-      box-shadow: 0 10px 25px rgba(0,0,0,0.25); 
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3); 
       text-align: center; 
       transition: transform 0.3s, box-shadow 0.3s;
     }
     .card:hover, .component-card:hover, .ai-card:hover, .team-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.5);
     }
     .card img, .component-card img, .ai-card img, .team-card img { width: 80%; border-radius: 10px; margin-bottom: 15px; }
 
@@ -114,20 +112,6 @@
       transform: scale(1.05);
     }
 
-    footer {
-      margin-left: 260px;
-      background-color: #081423;
-      padding: 20px 40px;
-      text-align: center;
-      color: #c8d7ef;
-      font-size: 0.9em;
-      box-shadow: 0 -4px 10px rgba(0,0,0,0.3);
-    }
-    footer a { color: #4da3ff; margin: 0 10px; }
-    footer a:hover { text-decoration: underline; }
-
-    a { color: inherit; text-decoration: none; }
-    a:visited { color: inherit; }
   </style>
 </head>
 <body>
@@ -245,8 +229,8 @@
 
   <section id="contatti">
     <h2>Contatti</h2>
-    <p>Email: <a href="mailto:altairtechsytems@gmail.com">altairtechsytems@gmail.com</a></p>
-    <p>Telefono: <a href="tel:+393774501917">+39 377 450 1917</a></p>
+    <p>Email: <a href="mailto:altairtechsytems@gmail.com" style="color:#4da3ff;">altairtechsytems@gmail.com</a></p>
+    <p>Telefono: <a href="tel:+393774501917" style="color:#4da3ff;">+39 377 450 1917</a></p>
     <p>Ufficio: Sede da desitinarsi</p>
   </section>
 
@@ -256,18 +240,12 @@
       <div class="team-card">
         <h3>Antonio Ndokaj</h3>
         <p>CEO & Capoprogetto</p>
-        <p>Email: <a href="mailto:antonio.ndokajj@gmail.com">antonio.ndokajj@gmail.com</a></p>
+        <p>Email: <a href="mailto:antonio.ndokajj@gmail.com" style="color:#4da3ff;">antonio.ndokajj@gmail.com</a></p>
       </div>
     </div>
   </section>
 
 </div>
-
-<footer>
-  © 2025 Altair Tech & Systems — Tutti i diritti riservati
-  <br>
-  <a href="#">Privacy Policy</a> | <a href="#contatti">Contatti</a> | <a href="#">Documentazione</a>
-</footer>
 
 <script>
   const sections = document.querySelectorAll('section');
