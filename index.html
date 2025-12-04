@@ -4,509 +4,265 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Altair Tech & Systems</title>
+
+<!-- Font -->
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 <link rel="icon" href="altairtechsystems_qr.png" type="image/png">
 
-<!-- model-viewer per 3D (usa il file neurowing_model.glb nella root) -->
+<!-- MODEL VIEWER (3D) -->
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
 <style>
-/* ---------------------------
-   VARS & RESET
-   --------------------------- */
-:root{
+/* THEME VARIABLES */
+:root {
   --bg: #0a1b2e;
-  --panel: #081423;
-  --card: #102137;
-  --muted: #c8d7ef;
-  --accent1: #1f6feb;
-  --accent2: #3b82f6;
+  --bg2: #081423;
   --text: #ffffff;
-  --radius: 12px;
-  --shadow: 0 8px 20px rgba(0,0,0,0.32);
-  --glass: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  --card: #102137;
+  --accent: #3b82f6;
 }
-[data-theme="light"]{
-  --bg: #f5f7fb;
-  --panel: #ffffff;
+[data-theme="light"] {
+  --bg: #f2f2f2;
+  --bg2: #e4e4e4;
+  --text: #1a1a1a;
   --card: #ffffff;
-  --muted: #41546b;
-  --accent1: #1f6feb;
-  --accent2: #3b82f6;
-  --text: #0b1220;
-  --shadow: 0 6px 18px rgba(16,24,40,0.06);
-  --glass: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.7));
+  --accent: #1f6feb;
 }
 
-*{box-sizing:border-box}
-html,body{height:100%;margin:0;padding:0}
+/* GLOBAL */
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   background-color: var(--bg);
   color: var(--text);
   display: flex;
-  transition: background 360ms ease, color 360ms ease;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+  transition: background 0.4s, color 0.4s;
 }
 
-/* ---------------------------
-   SIDEBAR
-   --------------------------- */
-.sidebar{
-  width:260px;
-  background:var(--panel);
-  height:100vh;
-  position:fixed;
-  left:0;top:0;
-  padding:36px 18px;
-  box-shadow: 4px 0 12px rgba(0,0,0,0.32);
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-  z-index:40;
+/* SIDEBAR */
+.sidebar {
+  width: 260px;
+  background-color: var(--bg2);
+  height: 100vh;
+  position: fixed;
+  padding-top: 40px;
+  box-shadow: 4px 0 12px rgba(0,0,0,0.4);
 }
-.sidebar h2{
-  margin:0;
-  font-weight:700;
-  text-align:center;
-  letter-spacing:2px;
-  color:var(--text);
-  cursor:pointer;
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
 }
-#menu-links{ margin-top:18px; display:flex; flex-direction:column; gap:6px; }
-.sidebar a{
-  display:block;
-  padding:12px 16px;
-  color:var(--muted);
-  text-decoration:none;
-  border-radius:8px;
-  font-size:1rem;
-  transition:all 200ms ease;
+.sidebar a {
+  display: block;
+  padding: 12px 30px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1.1em;
+  transition: 0.3s;
 }
-.sidebar a:hover{
-  background: linear-gradient(90deg,var(--accent1),var(--accent2));
-  color:#fff;
-  transform:translateX(6px);
+.sidebar a:hover {
+  background: var(--accent);
 }
 
-/* theme toggle */
-.theme-toggle{
-  position:absolute;
-  top:12px;
-  right:12px;
-  background:transparent;
-  border:none;
-  color:var(--muted);
-  font-size:1.2rem;
-  cursor:pointer;
-  padding:6px;
+/* THEME SWITCHER */
+.theme-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 1.4em;
 }
 
-/* ---------------------------
-   MAIN
-   --------------------------- */
-.main{
-  margin-left:260px;
-  padding:36px;
-  width:calc(100% - 260px);
-  min-height:100vh;
-  transition:margin-left 200ms ease,width 200ms ease;
+/* MAIN */
+.main {
+  margin-left: 260px;
+  width: calc(100% - 260px);
+  padding: 40px;
 }
 
-/* SECTIONS & HERO */
-section{ margin-bottom:80px; opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
-section.visible{ opacity:1; transform:translateY(0); }
-
-.hero{
-  background: url("https://naturabenesserecultura.it/wp-content/uploads/2024/09/carta_topografica_12.jpg") center/cover no-repeat;
-  height:480px;
-  border-radius:var(--radius);
-  display:flex;
-  align-items:center;
-  padding:36px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+/* SECTIONS */
+section {
+  margin-bottom: 120px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
-.hero h1{ font-size:2.6rem; margin:0 0 12px 0; max-width:700px; text-shadow:2px 2px 8px rgba(0,0,0,0.6) }
-.hero p{ margin:0; color:var(--muted) }
-.hero .actions{ margin-top:14px }
-
-/* BUTTONS */
-.button{
-  background: linear-gradient(135deg,var(--accent1),var(--accent2));
-  color:#fff;
-  border:none;
-  padding:10px 16px;
-  border-radius:10px;
-  font-weight:600;
-  text-decoration:none;
-  display:inline-block;
-  transition:transform .18s ease, box-shadow .18s ease;
-}
-.button:hover{ transform:scale(1.03); box-shadow: 0 8px 20px rgba(0,0,0,0.28) }
-
-/* CARDS / GRID */
-.card-container, .component-card-container, .ai-card-container, .team-card-container, .grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:22px;
-}
-.card, .component-card, .ai-card, .team-card{
-  background:var(--card);
-  padding:18px;
-  border-radius:12px;
-  box-shadow:var(--shadow);
-  text-align:center;
-  transition:transform .18s ease, box-shadow .18s ease;
-}
-.card:hover, .component-card:hover, .ai-card:hover, .team-card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 18px 36px rgba(0,0,0,0.45);
-}
-.card img, .component-card img, .ai-card img, .team-card img{
-  width:100%;
-  max-width:320px;
-  height:auto;
-  border-radius:8px;
-  margin:0 auto 12px auto;
-  display:block;
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* DOWNLOAD */
-.download-btn{
-  background: linear-gradient(135deg,#34a0ff,#1f6feb);
-  color:#fff;
-  padding:10px 14px;
-  border-radius:8px;
-  text-decoration:none;
-  display:inline-block;
+/* CARD (UNIFORMATA) */
+.card {
+  background: var(--card);
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  margin-bottom: 24px;
+  transition: transform 0.25s ease, box-shadow 0.25s;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.32);
+}
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: var(--accent);
 }
 
-/* FORM ELEMENTS */
-input, textarea {
-  width:100%;
-  padding:12px;
-  margin-top:10px;
-  border-radius:8px;
-  border: none;
-  background: rgba(255,255,255,0.02);
-  color:var(--text);
+/* VIDEO */
+video {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 10px;
 }
 
-/* MODEL VIEWER & VIDEO */
-model-viewer{
-  width:100%;
-  height:420px;
-  border-radius:12px;
-  background:var(--card);
-  display:block;
+/* 3D MODEL */
+model-viewer {
+  width: 100%;
+  height: 400px;
+  background: var(--card);
+  border-radius: 12px;
+  margin-top: 20px;
 }
-video{ width:100%; border-radius:12px; display:block }
 
 /* FOOTER */
-footer{
-  background:var(--panel);
-  color:var(--muted);
-  text-align:center;
-  padding:14px 20px;
-  margin-top:40px;
-  border-radius:8px;
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: var(--bg2);
+  text-align: center;
+  padding: 15px 0;
 }
-
-/* ---------------------------
-   RESPONSIVE
-   --------------------------- */
-@media (max-width: 980px){
-  .sidebar{ width:220px }
-  .main{ margin-left:220px; width:calc(100% - 220px) }
-}
-@media (max-width: 768px){
-  body{ display:block }
-  .sidebar{
-    position:relative;
-    width:100%;
-    height:auto;
-    padding:14px;
-    box-shadow:none;
-  }
-  .main{ margin-left:0; width:100%; padding:18px }
-  .hero{ height:320px; padding:20px }
-  .hero h1{ font-size:1.6rem }
-  #menu-links{ display:none } /* toggled by JS */
-  .mobile-menu-open #menu-links{ display:flex; flex-direction:column; gap:8px; margin-top:8px }
-  footer{ position:static }
-}
-
-/* small tweaks */
-a[role="button"]{ cursor:pointer }
 </style>
+
 </head>
 <body>
 
 <!-- SIDEBAR -->
-<div class="sidebar" id="sidebar">
-  <button class="theme-toggle" id="themeSwitcher" aria-label="Cambia tema">🌙</button>
-  <h2 id="menu-toggle">ALTΛIR &#9776;</h2>
+<div class="sidebar">
+  <div class="theme-toggle" id="themeSwitcher">🌙</div>
+  <h2>ALTΛIR</h2>
 
-  <nav id="menu-links" aria-label="Menu principale">
-    <a href="#home">Home</a>
-    <a href="#chi-siamo">Chi Siamo</a>
-    <a href="#neurowing">Neurowing</a>
-    <a href="#specifiche">Scheda Tecnica</a>
-    <a href="#componenti">Componentistica</a>
-    <a href="#ai">AI Integrata</a>
-    <a href="#team">Team</a>
-    <a href="#lavora-con-noi">Lavora con noi</a>
-    <a href="#contatti">Contatti</a>
-  </nav>
+  <a href="#home">Home</a>
+  <a href="#neurowing">Neurowing</a>
+  <a href="#componentistica">Componentistica</a>
+  <a href="#video">Video Demo</a>
+  <a href="#modello3d">Modello 3D</a>
+  <a href="#contatti">Contatti</a>
 </div>
 
 <!-- MAIN -->
-<div class="main" id="main">
+<div class="main">
+
   <!-- HERO -->
-  <section id="home" class="hero visible" aria-labelledby="home-title">
-    <div>
-      <h1 id="home-title">Neurowing. Tecnologia oltre i confini.</h1>
-      <p style="color:var(--muted); max-width:760px;">Platforma UAV modulare per missioni ISR, SAR, monitoraggio ambientale e supporto tattico — progettata per operare in scenari complessi con AI onboard e sensori professionali.</p>
-      <div class="actions">
-        <a class="button" href="https://www.instagram.com/altairtechsystems/" target="_blank" rel="noopener">Scopri il Progetto</a>
-      </div>
+  <section id="home" class="visible">
+    <h1>ALTΛIR — Autonomous Flight Intelligence</h1>
+    <p>Soluzioni integrate per UAV, sistemi intelligenti e piattaforme autonome di nuova generazione.</p>
+  </section>
+
+  <!-- NEUROWING (VERSIONE SNELLITA) -->
+  <section id="neurowing">
+    <h2>Neurowing</h2>
+    <div class="card">
+      <p>
+        Neurowing è il modulo centrale che unifica controllo di volo, gestione energetica e intelligenza autonoma.
+        Garantisce stabilità, efficienza e reattività in missioni complesse grazie a elaborazione dedicata e
+        ottimizzazione continua.
+      </p>
     </div>
   </section>
 
-  <!-- CHI SIAMO -->
-  <section id="chi-siamo" aria-labelledby="chi-title">
-    <h2 id="chi-title">Chi Siamo</h2>
-    <p>Altair Tech & Systems è una Start Up Early Stage specializzata nello sviluppo di piattaforme UAV professionali dedicate a missioni ISR, SAR, monitoraggio ambientale, supporto tattico e comunicazioni avanzate. Combiniamo ingegneria aeronautica, sensoristica di ultima generazione e sistemi di controllo autonomi per creare soluzioni affidabili, modulari e operative in scenari complessi. La nostra visione è portare le operazioni unmanned a un livello superiore, garantendo efficienza, precisione e resilienza anche nelle condizioni più difficili.</p>
-  </section>
+  <!-- COMPONENTISTICA (VERSIONE SNELLITA) -->
+  <section id="componentistica">
+    <h2>Componentistica</h2>
 
-  <!-- NEUROWING -->
-  <section id="neurowing" aria-labelledby="neurowing-title">
-    <h2 id="neurowing-title">Neurowing — Il Primo Progetto Altair</h2>
-    <div class="card-container" role="list">
-      <article class="card" role="listitem">
-        <img loading="lazy" src="https://static.vecteezy.com/system/resources/thumbnails/042/640/472/small/ai-generated-rescue-team-in-rescue-operation-from-landslide-situation-searching-for-missing-person-help-injured-people-photo.jpg" alt="Operazione di soccorso">
-        <h3>Missioni SAR</h3>
-        <p>Neurowing è progettato per ricerca e soccorso. Supporta operazioni critiche in scenari complessi e ambienti remoti.</p>
-      </article>
+    <div class="card">
+      <h3>Unità di Controllo</h3>
+      <p>Cuore del sistema: gestisce volo, stabilizzazione e logiche autonome.</p>
+    </div>
 
-      <article class="card" role="listitem">
-        <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Pararescue.training_exercise.jpg" alt="Esercitazione ISR">
-        <h3>Missioni ISR</h3>
-        <p>La versatilità di Neurowing permette l'utilizzo anche in ambienti ostili, ideale per missioni ISR.</p>
-      </article>
+    <div class="card">
+      <h3>Sensori Integrati</h3>
+      <p>Pacchetto sensoriale ottimizzato per percezione ambientale e navigazione avanzata.</p>
+    </div>
 
-      <article class="card" role="listitem">
-        <img loading="lazy" src="https://www.crespimetalli.com/media/alluminio-ergal-7075.jpeg" alt="Alluminio 7075">
-        <h3>Telaio in Alluminio 7075 T6</h3>
-        <p>Struttura a fusoliera in alluminio 7075 T6 anodizzato, leggera e resistente, ottimizzata per volo VTOL e crociera.</p>
-      </article>
+    <div class="card">
+      <h3>Power System</h3>
+      <p>Gestione energetica bilanciata per massimizzare autonomia e prestazioni operative.</p>
+    </div>
 
-      <article class="card" role="listitem">
-        <img loading="lazy" src="https://www.hwupgrade.it/i/n/YasaMain.webp" alt="Motore VTOL" style="margin-bottom:8px;">
-        <img loading="lazy" src="https://s.alicdn.com/@sc04/kf/He32688b154d84a7db631860eae1b73baF.jpg" alt="Motore di crociera">
-        <h3>Motoristica Dual Use</h3>
-        <p>Motori dedicati al decollo e atterraggio verticale VTOL e motore di crociera ad alta efficienza per lunghe distanze.</p>
-      </article>
-
-      <article class="card" role="listitem">
-        <img loading="lazy" src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcS6ilYab9V7vmz327dcSzGabM9ai8MESLWERF1Y_wn-ayekx25ZxK2C9t4H2WqLdFvA8tOJTKRsbUfcQgeMFliqxCHBDWOEREEwmKrXgY1BhLeqhCO_vckcka78&usqp=CAc" alt="Batterie">
-        <h3>Autonomia & Batterie</h3>
-        <p>Sistemi di alimentazione ad alta capacità con gestione intelligente della batteria, ottimizzati per missioni lunghe e continuative.</p>
-      </article>
-
-      <article class="card" role="listitem">
-        <img loading="lazy" src="https://www.ingenio-web.it/upload/blog/c/f/4/a4a7b58b279392f852807d5b812e65fbd844ec56.jpg" alt="Resilienza strutturale">
-        <h3>Resilienza in Volo</h3>
-        <p>Struttura robusta, componenti ridondati e sistemi di emergenza per operare in condizioni avverse senza compromessi sulle missioni.</p>
-      </article>
-
-      <article class="card" role="listitem">
-        <img loading="lazy" src="https://www.unmannedsystemstechnology.com/wp-content/uploads/2021/08/tualcom-1.webp" alt="Payload modulare">
-        <h3>Modularità dei Carichi</h3>
-        <p>Supporta payload intercambiabili per sensori, strumenti e missioni specializzate, adattandosi facilmente a diverse operazioni.</p>
-      </article>
+    <div class="card">
+      <h3>Modulo Comunicazioni</h3>
+      <p>Connessione affidabile e sicura per telemetria, controllo remoto e coordinamento missione.</p>
     </div>
   </section>
 
-  <!-- SPECIFICHE -->
-  <section id="specifiche" aria-labelledby="specifiche-title">
-    <h2 id="specifiche-title">Scheda Tecnica</h2>
-    <p>Il Neurowing integra sensori avanzati, sistemi di comunicazione ridondati e hardware di bordo di livello professionale.</p>
-    <a class="download-btn" href="Specifiche Tecniche Neurowing.pdf" download>Scarica Scheda Tecnica</a>
-  </section>
-
-  <!-- COMPONENTI -->
-  <section id="componenti" aria-labelledby="componenti-title">
-    <h2 id="componenti-title">Componentistica & Sensoristica</h2>
-    <div class="component-card-container" role="list">
-      <article class="component-card" role="listitem">
-        <img loading="lazy" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZNrTpXMbY3WC5ArUhub66vkfv8JH-9B3rdw&s" alt="FLIR Boson 640">
-        <h3>Camera FLIR Boson 640</h3>
-        <p>Rilevamento termico avanzato per ISR e missioni SAR.</p>
-      </article>
-
-      <article class="component-card" role="listitem">
-        <img loading="lazy" src="https://www.3dtarget.it/eu/images/velodyne/pucklite_01.jpg" alt="Velodyne Puck">
-        <h3>LIDAR Velodyne Puck</h3>
-        <p>Rilevamento 3D ad alta precisione per mappature e navigazione autonoma.</p>
-      </article>
-
-      <article class="component-card" role="listitem">
-        <img loading="lazy" src="https://cdn.prod.website-files.com/6365084f1295f38fadbf8824/6708de219f86205cea11bb02_jammer.jpg" alt="Jammer RF">
-        <h3>CNT SIGINT & Jammer RF</h3>
-        <p>Intercettazione segnali e contromisure elettroniche avanzate.</p>
-      </article>
-
-      <article class="component-card" role="listitem">
-        <img loading="lazy" src="https://aerium.co.il/cdn/shop/files/New_Project.png?v=1755022327&width=1080" alt="Cube Orange">
-        <h3>Autopilota Cube Orange</h3>
-        <p>Controllo di volo preciso e supporto missione semi-autonoma.</p>
-      </article>
-
-      <article class="component-card" role="listitem">
-        <img loading="lazy" src="https://static4.arrow.com/-/media/arrow/images/miscellaneous/jetson-nano_3qtr-front_left-1-3.jpg" alt="Jetson Nano">
-        <h3>NVIDIA Jetson Nano</h3>
-        <p>Companion computer per AI e analisi dati onboard.</p>
-      </article>
-
-      <article class="component-card" role="listitem">
-        <img loading="lazy" src="https://files.tecnoblog.net/wp-content/uploads/2023/10/gps-glonass-galileo-1536x864.jpg" alt="GPS GLONASS GALILEO">
-        <h3>GPS/GLONASS/GALILEO RTK</h3>
-        <p>Posizionamento preciso per navigazione e georeferenziazione.</p>
-      </article>
-
-      <article class="component-card" role="listitem">
-        <img loading="lazy" src="https://furuno.it/assets/img/sousfamilles/IRIDIUM.jpg" alt="Iridium">
-        <h3>Comunicazioni Iridium + Rete Mesh + 900MHz</h3>
-        <p>Connessione stabile in scenari remoti e complessi.</p>
-      </article>
+  <!-- VIDEO -->
+  <section id="video">
+    <h2>Video Dimostrativo</h2>
+    <div class="card">
+      <video controls preload="none" loading="lazy">
+        <source src="neurowing_demo.mp4" type="video/mp4">
+      </video>
+      <p>Dimostrazione concettuale del sistema Neurowing.</p>
     </div>
   </section>
 
-  <!-- AI -->
-  <section id="ai" aria-labelledby="ai-title">
-    <h2 id="ai-title">Implementazione AI</h2>
-    <p>Neurowing integra algoritmi di intelligenza artificiale avanzata per missioni autonome, analisi dati in tempo reale e supporto decisionale intelligente. L'AI gestisce il tracciamento di oggetti, la pianificazione del volo ottimizzata e la gestione dei sensori complessi, garantendo precisione e adattabilità in scenari dinamici.</p>
-
-    <div class="ai-card-container" role="list">
-      <article class="ai-card" role="listitem">
-        <img loading="lazy" src="https://www.shutterstock.com/image-vector/artificial-intelligence-icon-on-integrated-600nw-2631218413.jpg" alt="AI Core">
-        <h3>AI Core</h3>
-        <p>Elaborazione dati e decisioni autonome onboard.</p>
-      </article>
-      <article class="ai-card" role="listitem">
-        <img loading="lazy" src="https://img.ai4business.it/wp-content/uploads/2017/11/13202746/Nodo-di-una-rete-neurale-artificiale.jpg" alt="Rete Neurale">
-        <h3>Reti Neurali</h3>
-        <p>Analisi predittiva e riconoscimento pattern in tempo reale.</p>
-      </article>
-      <article class="ai-card" role="listitem">
-        <img loading="lazy" src="https://daaslabs.ai/blog/wp-content/uploads/2020/05/The_Era-of-Computer-Vision-Is-Here.png" alt="Computer Vision">
-        <h3>Computer Vision</h3>
-        <p>Elaborazione visiva dai sensori e ottimizzazione missione.</p>
-      </article>
-    </div>
-  </section>
-
-  <!-- TEAM -->
-  <section id="team" aria-labelledby="team-title">
-    <h2 id="team-title">Team</h2>
-    <div class="team-card-container" role="list">
-      <article class="team-card" role="listitem">
-        <h3>Antonio Ndokaj</h3>
-        <p>CEO & Capoprogetto</p>
-        <p>Email: <a href="mailto:antonio.ndokajj@gmail.com" style="color:var(--accent2)">antonio.ndokajj@gmail.com</a></p>
-      </article>
-    </div>
-  </section>
-
-  <!-- LAVORA CON NOI (fixed class bug corrected) -->
-  <section id="lavora-con-noi" aria-labelledby="lavora-title">
-    <h2 id="lavora-title">Lavora con noi</h2>
-    <div class="lavora-card-container">
-      <div class="lavora-card card">
-        <h3>Perché lavorare con noi?</h3>
-        <p>Lavorare in Altair Tech & Systems significa lavorare in quella che sarà l'eccellenza delle piattaforme UAV VTOL di nuova generazione; significa lavorare in un ambiente professionale specializzato ma al contempo leggero, libero e giovane.</p>
-        <a href="mailto:altairtechsystems@gmail.com" class="button" aria-role="button">Lavora con noi</a>
-      </div>
+  <!-- MODELLO 3D -->
+  <section id="modello3d">
+    <h2>Modello 3D Interattivo</h2>
+    <div class="card">
+      <model-viewer
+        src="neurowing_model.glb"
+        ar
+        auto-rotate
+        loading="lazy"
+        camera-controls>
+      </model-viewer>
+      <p>Esplora il prototipo Neurowing in 3D.</p>
     </div>
   </section>
 
   <!-- CONTATTI -->
-  <section id="contatti" aria-labelledby="contatti-title">
-    <h2 id="contatti-title">Contatti</h2>
-    <p>Email: <a href="mailto:altairtechsytems@gmail.com" style="color:var(--accent2)">altairtechsytems@gmail.com</a></p>
-    <p>Telefono: <a href="tel:+393774501917" style="color:var(--accent2)">+39 377 450 1917</a></p>
-    <p>Ufficio: Sede da destinarsi</p>
+  <section id="contatti">
+    <h2>Contatti</h2>
+    <p>Email: altairtechsystems@gmail.com</p>
   </section>
-
-  <footer>
-    © 2025 Altair Tech & Systems. Tutti i diritti riservati. I contenuti di questo sito sono di proprietà di Altair Tech & Systems o dei rispettivi titolari e sono protetti dalle leggi internazionali sul copyright.
-  </footer>
 
 </div>
 
+<footer>
+  © 2025 Altair Tech & Systems
+</footer>
+
 <script>
-/* ---------------------------
-   ON-SCROLL REVEAL
-   --------------------------- */
-const sections = document.querySelectorAll('section');
-const obs = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting) entry.target.classList.add('visible');
+// THEME SWITCHER
+const switcher = document.getElementById('themeSwitcher');
+switcher.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme');
+  const newTheme = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  switcher.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+});
+
+// APPEAR ON SCROLL
+const sections = document.querySelectorAll("section");
+function reveal() {
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      sec.classList.add("visible");
+    }
   });
-},{threshold:0.18});
-sections.forEach(s=>obs.observe(s));
-
-/* ---------------------------
-   MOBILE MENU TOGGLE
-   --------------------------- */
-const menuToggle = document.getElementById('menu-toggle');
-const sidebar = document.getElementById('sidebar');
-menuToggle.addEventListener('click', ()=>{
-  // toggle mobile class to show/hide links on small screens
-  document.body.classList.toggle('mobile-menu-open');
-});
-
-/* ---------------------------
-   THEME SWITCHER
-   --------------------------- */
-// initial theme based on saved preference or OS preference
-const root = document.documentElement;
-const themeSwitcher = document.getElementById('themeSwitcher');
-
-function applyTheme(theme){
-  root.setAttribute('data-theme', theme);
-  themeSwitcher.textContent = theme === 'dark' ? '🌙' : '☀️';
-  localStorage.setItem('altair_theme', theme);
 }
-
-const saved = localStorage.getItem('altair_theme');
-if(saved){
-  applyTheme(saved);
-} else {
-  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  applyTheme(prefersDark ? 'dark' : 'light');
-}
-
-themeSwitcher.addEventListener('click', ()=>{
-  const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-  applyTheme(current === 'dark' ? 'light' : 'dark');
-});
-
-/* ---------------------------
-   Lightweight accessibility: keyboard nav for menu
-   --------------------------- */
-const links = document.querySelectorAll('#menu-links a');
-links.forEach((lnk, i) => {
-  lnk.addEventListener('keydown', (e) => {
-    if(e.key === 'ArrowDown'){ e.preventDefault(); links[(i+1)%links.length].focus(); }
-    if(e.key === 'ArrowUp'){ e.preventDefault(); links[(i-1+links.length)%links.length].focus(); }
-  });
-});
+window.addEventListener("scroll", reveal);
+reveal();
 </script>
+
 </body>
 </html>
-
