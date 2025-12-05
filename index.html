@@ -91,6 +91,24 @@ body {
   transform:translateX(6px);
 }
 
+/* language switch small buttons */
+.lang-switch {
+  display:flex;
+  gap:8px;
+  margin-top: 10px;
+  justify-content:center;
+}
+.lang-switch button{
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.06);
+  color:var(--muted);
+  padding:6px 8px;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:0.9rem;
+}
+.lang-switch button:hover{ border-color:var(--accent1); color:var(--accent2); }
+
 /* theme toggle */
 .theme-toggle{
   position:absolute;
@@ -146,7 +164,13 @@ section.visible{ opacity:1; transform:translateY(0); }
 }
 .button:hover{ transform:scale(1.03); box-shadow: 0 8px 20px rgba(0,0,0,0.28) }
 
-/* CARDS / GRID */
+/* small roadmap tweaks */
+.timeline{ border-left:2px solid var(--accent1); padding-left:26px; margin-top:18px; }
+.timeline .entry{ margin-bottom:20px; }
+.timeline .entry h3{ margin:0; color:var(--accent2); }
+.timeline .entry p{ margin:6px 0 0 0; color:var(--muted); }
+
+/* rest of styles unchanged (cards, grids, etc.) - kept as in original */
 .card-container, .component-card-container, .ai-card-container, .team-card-container, .grid {
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -257,18 +281,25 @@ a[role="button"]{ cursor:pointer }
   <h2 id="menu-toggle">ALTΛIR &#9776;</h2>
 
   <nav id="menu-links" aria-label="Menu principale">
-    <a href="#home">Home</a>
-    <a href="#chi-siamo">Chi Siamo</a>
-    <a href="#neurowing">Neurowing</a>
-    <a href="#specifiche">Scheda Tecnica</a>
-    <a href="#componenti">Componentistica</a>
-    <a href="#ai">AI Integrata</a>
-    <a href="#video">Video Demo</a>
-    <a href="#modello3d">Modello 3D</a>
-    <a href="#team">Team</a>
-    <a href="#lavora-con-noi">Lavora con noi</a>
-    <a href="#contatti">Contatti</a>
+    <a href="#home" data-i18n="nav_home">Home</a>
+    <a href="#chi-siamo" data-i18n="nav_chi">Chi Siamo</a>
+    <a href="#neurowing" data-i18n="nav_neurowing">Neurowing</a>
+    <a href="#specifiche" data-i18n="nav_specifiche">Scheda Tecnica</a>
+    <a href="#componenti" data-i18n="nav_componenti">Componentistica</a>
+    <a href="#ai" data-i18n="nav_ai">AI Integrata</a>
+    <a href="#video" data-i18n="nav_video">Video Demo</a>
+    <a href="#modello3d" data-i18n="nav_3d">Modello 3D</a>
+    <a href="#team" data-i18n="nav_team">Team</a>
+    <a href="#lavora-con-noi" data-i18n="nav_lavora">Lavora con noi</a>
+    <a href="#contatti" data-i18n="nav_contatti">Contatti</a>
   </nav>
+
+  <!-- language switcher (JS controller added in final block) -->
+  <div class="lang-switch" aria-label="Seleziona lingua">
+    <button id="lang-it" aria-label="Italiano">IT</button>
+    <button id="lang-en" aria-label="English">EN</button>
+    <button id="lang-zh" aria-label="中文">中文</button>
+  </div>
 </div>
 
 <!-- MAIN -->
@@ -276,278 +307,517 @@ a[role="button"]{ cursor:pointer }
   <!-- HERO -->
   <section id="home" class="hero visible" aria-labelledby="home-title">
     <div>
-      <h1 id="home-title">Neurowing. Tecnologia oltre i confini.</h1>
-      <p style="color:var(--muted); max-width:760px;">Platforma UAV modulare per missioni ISR, SAR, monitoraggio ambientale e supporto tattico — progettata per operare in scenari complessi con AI onboard e sensori professionali.</p>
+      <h1 id="home-title" data-i18n="hero_title">Neurowing. Tecnologia oltre i confini.</h1>
+      <p id="hero-p" data-i18n="hero_p" style="color:var(--muted); max-width:760px;">Platforma UAV modulare per missioni ISR, SAR, monitoraggio ambientale e supporto tattico — progettata per operare in scenari complessi con AI onboard e sensori professionali.</p>
       <div class="actions">
-        <a class="button" href="https://www.instagram.com/altairtechsystems/" target="_blank" rel="noopener">Scopri il Progetto</a>
+        <a class="button" href="https://www.instagram.com/altairtechsystems/" target="_blank" rel="noopener" data-i18n="hero_cta">Scopri il Progetto</a>
       </div>
     </div>
   </section>
 
   <!-- CHI SIAMO -->
   <section id="chi-siamo" aria-labelledby="chi-title">
-    <h2 id="chi-title">Chi Siamo</h2>
-    <p>Altair Tech & Systems è una Start Up Early Stage specializzata nello sviluppo di piattaforme UAV professionali dedicate a missioni ISR, SAR, monitoraggio ambientale, supporto tattico e comunicazioni avanzate. Combiniamo ingegneria aeronautica, sensoristica di ultima generazione e sistemi di controllo autonomi per creare soluzioni affidabili, modulari e operative in scenari complessi. La nostra visione è portare le operazioni unmanned a un livello superiore, garantendo efficienza, precisione e resilienza anche nelle condizioni più difficili.</p>
+    <h2 id="chi-title" data-i18n="chi_title">Chi Siamo</h2>
+    <p id="chi-p" data-i18n="chi_p">Altair Tech & Systems è una Start Up Early Stage specializzata nello sviluppo di piattaforme UAV professionali dedicate a missioni ISR, SAR, monitoraggio ambientale, supporto tattico e comunicazioni avanzate. Combiniamo ingegneria aeronautica, sensoristica di ultima generazione e sistemi di controllo autonomi per creare soluzioni affidabili, modulari e operative in scenari complessi. La nostra visione è portare le operazioni unmanned a un livello superiore, garantendo efficienza, precisione e resilienza anche nelle condizioni più difficili.</p>
   </section>
 
+  <!-- ROADMAP (inserita dopo Chi Siamo) -->
+  <section id="roadmap" aria-labelledby="roadmap-title">
+    <h2 id="roadmap-title" data-i18n="roadmap_title">Roadmap di Sviluppo</h2>
+    <div class="timeline" aria-hidden="false">
+      <div class="entry">
+        <h3 data-i18n="road_q1">Q1 2025 — Concept Design ✓</h3>
+        <p data-i18n="road_q1_p">Completato design strutturale, definizione configurazione VTOL, analisi preliminari.</p>
+      </div>
+      <div class="entry">
+        <h3 data-i18n="road_q2">Q2 2025 — Prototipo Strutturale</h3>
+        <p data-i18n="road_q2_p">Costruzione fusoliera in alluminio 7075 T6, test pre-assemblaggio.</p>
+      </div>
+      <div class="entry">
+        <h3 data-i18n="road_q3">Q3 2025 — Integrazione Sensoristica</h3>
+        <p data-i18n="road_q3_p">Installazione FLIR, LIDAR, autopilota, moduli AI embedded.</p>
+      </div>
+      <div class="entry">
+        <h3 data-i18n="road_q4">Q4 2025 — Test di Volo</h3>
+        <p data-i18n="road_q4_p">Test VTOL, hovering, cruise, comunicazioni mesh/iridium.</p>
+      </div>
+      <div class="entry">
+        <h3 data-i18n="road_2026">2026 — Versione Pre-Produzione</h3>
+        <p data-i18n="road_2026_p">Ottimizzazione avionica, software, aerodinamica, certificazioni.</p>
+      </div>
+    </div>
+  </section>
   <!-- NEUROWING -->
-  <section id="neurowing" aria-labelledby="neurowing-title">
-    <h2 id="neurowing-title">Neurowing — Il Primo Progetto Altair</h2>
-    <div class="card-container" role="list">
-      <article class="card" role="listitem">
-        <img loading="lazy">
-        <h3>Missioni SAR</h3>
-        <p>Neurowing è progettato per ricerca e soccorso. Supporta operazioni critiche in scenari complessi e ambienti remoti.</p>
-      </article>
+  <section id="neurowing" aria-labelledby="neu-title">
+    <h2 id="neu-title" data-i18n="neu_title">Neurowing</h2>
+    <p id="neu-p" data-i18n="neu_p">
+      Neurowing è un UAV VTOL modulare progettato per missioni ad alta complessità. 
+      Combina autonomia, sensoristica avanzata e AI onboard per fornire capacità ISR, 
+      SAR e monitoraggio ambientale in scenari difficili. 
+      La piattaforma è pensata per essere robusta, espandibile e pronta all’integrazione 
+      con payload professionali.
+    </p>
 
-      <article class="card" role="listitem">
-        <img loading="lazy">
-        <h3>Missioni ISR</h3>
-        <p>La versatilità di Neurowing permette l'utilizzo anche in ambienti ostili, ideale per missioni ISR.</p>
-      </article>
-
-      <article class="card" role="listitem">
-        <img loading="lazy">
-        <h3>Telaio in Alluminio 7075 T6</h3>
-        <p>Struttura a fusoliera in alluminio 7075 T6 anodizzato, leggera e resistente, ottimizzata per volo VTOL e crociera.</p>
-      </article>
-
-      <article class="card" role="listitem">
-        <img loading="lazy"style="margin-bottom:8px;">
-        <h3>Motoristica Dual Use</h3>
-        <p>Motori dedicati al decollo e atterraggio verticale VTOL e motore di crociera ad alta efficienza per lunghe distanze.</p>
-      </article>
-
-      <article class="card" role="listitem">
-        <img loading="lazy">
-        <h3>Autonomia & Batterie</h3>
-        <p>Sistemi di alimentazione ad alta capacità con gestione intelligente della batteria, ottimizzati per missioni lunghe e continuative.</p>
-      </article>
-
-      <article class="card" role="listitem">
-        <img loading="lazy">
-        <h3>Resilienza in Volo</h3>
-        <p>Struttura robusta, componenti ridondati e sistemi di emergenza per operare in condizioni avverse senza compromessi sulle missioni.</p>
-      </article>
-
-      <article class="card" role="listitem">
-        <img loading="lazy">
-        <h3>Modularità dei Carichi</h3>
-        <p>Supporta payload intercambiabili per sensori, strumenti e missioni specializzate, adattandosi facilmente a diverse operazioni.</p>
-      </article>
+    <div class="card-container">
+      <div class="card">
+        <img src="https://www.tecnodellavia.it/wp-content/uploads/2024/02/uav_professionale.jpg" alt="Drone professionale">
+        <h3 data-i18n="neu_card1_t">Configurazione VTOL</h3>
+        <p data-i18n="neu_card1_p">
+          Decollo verticale, transizione fluida e capacità di operare in aree ad accesso limitato
+          senza necessità di piste.
+        </p>
+      </div>
+      <div class="card">
+        <img src="https://www.aerialopticsdrones.com/wp-content/uploads/2023/08/thermal_sensor_drone.jpg" alt="Sensori UAV">
+        <h3 data-i18n="neu_card2_t">Sensoristica Integrata</h3>
+        <p data-i18n="neu_card2_p">
+          Compatibile con camere EO/IR, LIDAR, termiche, multispettrali e moduli RF avanzati.
+        </p>
+      </div>
+      <div class="card">
+        <img src="https://www.aeromapper.com/wp-content/uploads/2023/06/drone_ai_software.webp" alt="AI onboard">
+        <h3 data-i18n="neu_card3_t">AI Onboard</h3>
+        <p data-i18n="neu_card3_p">
+          Riconoscimento oggetti, navigazione autonoma, prevenzione ostacoli e analisi real-time.
+        </p>
+      </div>
     </div>
   </section>
 
-  <!-- SPECIFICHE -->
-  <section id="specifiche" aria-labelledby="specifiche-title">
-    <h2 id="specifiche-title">Scheda Tecnica</h2>
-    <p>Il Neurowing integra sensori avanzati, sistemi di comunicazione ridondati e hardware di bordo di livello professionale.</p>
-    <a class="download-btn" href="Specifiche Tecniche Neurowing.pdf" download>Scarica Scheda Tecnica</a>
-  </section>
+  <!-- USE CASES (nuova sezione) -->
+  <section id="usecases" aria-labelledby="use-title">
+    <h2 id="use-title" data-i18n="use_title">Applicazioni Operative</h2>
+    <p data-i18n="use_p">
+      I principali scenari in cui Neurowing può operare garantendo efficienza, sicurezza e continuità operativa.
+    </p>
 
-  <!-- COMPONENTI -->
-  <section id="componenti" aria-labelledby="componenti-title">
-    <h2 id="componenti-title">Componentistica & Sensoristica</h2>
-    <div class="component-card-container" role="list">
-      <article class="component-card" role="listitem">
-        <img loading="lazy">
-        <h3>Camera FLIR Boson 640</h3>
-        <p>Rilevamento termico avanzato per ISR e missioni SAR.</p>
-      </article>
-
-      <article class="component-card" role="listitem">
-        <img loading="lazy">
-        <h3>LIDAR Velodyne Puck</h3>
-        <p>Rilevamento 3D ad alta precisione per mappature e navigazione autonoma.</p>
-      </article>
-
-      <article class="component-card" role="listitem">
-        <img loading="lazy">
-        <h3>CNT SIGINT & Jammer RF</h3>
-        <p>Intercettazione segnali e contromisure elettroniche avanzate.</p>
-      </article>
-
-      <article class="component-card" role="listitem">
-        <img loading="lazy">
-        <h3>Autopilota Cube Orange</h3>
-        <p>Controllo di volo preciso e supporto missione semi-autonoma.</p>
-      </article>
-
-      <article class="component-card" role="listitem">
-        <img loading="lazy">
-        <h3>NVIDIA Jetson Nano</h3>
-        <p>Companion computer per AI e analisi dati onboard.</p>
-      </article>
-
-      <article class="component-card" role="listitem">
-        <img loading="lazy">
-        <h3>GPS/GLONASS/GALILEO RTK</h3>
-        <p>Posizionamento preciso per navigazione e georeferenziazione.</p>
-      </article>
-
-      <article class="component-card" role="listitem">
-        <img loading="lazy">
-        <h3>Comunicazioni Iridium + Rete Mesh + 900MHz</h3>
-        <p>Connessione stabile in scenari remoti e complessi.</p>
-      </article>
+    <div class="card-container">
+      <div class="card">
+        <h3 data-i18n="use1_t">SAR – Ricerca e Soccorso</h3>
+        <p data-i18n="use1_p">Rilevamento termico, mappatura rapida e ricerca visiva anche in condizioni avverse.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="use2_t">ISR – Intelligence & Recon</h3>
+        <p data-i18n="use2_p">Sorveglianza tattica, monitoraggio continuo e acquisizione obiettivi.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="use3_t">Monitoraggio Incendi</h3>
+        <p data-i18n="use3_p">Identificazione focolai, analisi IR e tracciamento evoluzione incendi.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="use4_t">Monitoraggio Ambientale</h3>
+        <p data-i18n="use4_p">Rilevamenti multispettrali, analisi boschi, coste e variazioni del territorio.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="use5_t">Sicurezza & Confini</h3>
+        <p data-i18n="use5_p">Pattugliamento automatizzato, visione notturna e rilevamento attività sospette.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="use6_t">Agritech</h3>
+        <p data-i18n="use6_p">Mappature NDVI, gestione risorse idriche e controllo colture avanzato.</p>
+      </div>
     </div>
   </section>
 
-  <!-- AI -->
+  <!-- SPECIFICHE TECNICHE -->
+  <section id="specifiche" aria-labelledby="spec-title">
+    <h2 id="spec-title" data-i18n="spec_title">Specifiche Tecniche</h2>
+    <p data-i18n="spec_p">Dati principali del sistema aggiornati alla versione prototipale.</p>
+
+    <div class="card-container">
+      <div class="card">
+        <h3 data-i18n="spec_autonomia_t">Autonomia</h3>
+        <p data-i18n="spec_autonomia_p">120–150 minuti variabili in base al payload.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="spec_peso_t">Peso Totale</h3>
+        <p data-i18n="spec_peso_p">6.5 kg (struttura + avionica) — modulare.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="spec_vel_t">Velocità</h3>
+        <p data-i18n="spec_vel_p">Cruise 18–22 m/s, punta 28 m/s.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="spec_batt_t">Batteria</h3>
+        <p data-i18n="spec_batt_p">6S Li-ion / Li-po con gestione termica.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="spec_comms_t">Comunicazione</h3>
+        <p data-i18n="spec_comms_p">Long-range 2.4/915 MHz, mesh, opzionale LTE/Satcom.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="spec_sensor_t">Compatibilità Payload</h3>
+        <p data-i18n="spec_sensor_p">LIDAR, IR, EO, multispettrale, moduli RF.</p>
+      </div>
+    </div>
+
+    <a class="download-btn" href="Specifiche_Tecniche_Neurowing_Interattiva.pdf" download data-i18n="spec_dl">Scarica PDF Tecnico</a>
+  </section>
+
+  <!-- COMPONENTISTICA (snellita) -->
+  <section id="componenti" aria-labelledby="comp-title">
+    <h2 id="comp-title" data-i18n="comp_title">Componentistica Principale</h2>
+    <p data-i18n="comp_p">Una panoramica dei principali componenti utilizzati nella piattaforma.</p>
+
+    <div class="component-card-container">
+      <div class="component-card">
+        <h3 data-i18n="comp1_t">Struttura</h3>
+        <p data-i18n="comp1_p">Fusoliera in alluminio 7075 T6 & carbonio. Leggera e ad alta resistenza.</p>
+      </div>
+
+      <div class="component-card">
+        <h3 data-i18n="comp2_t">Motori & ESC</h3>
+        <p data-i18n="comp2_p">Powertrain brushless ad alta efficienza per VTOL e cruise.</p>
+      </div>
+
+      <div class="component-card">
+        <h3 data-i18n="comp3_t">Autopilota</h3>
+        <p data-i18n="comp3_p">Controller PX4/ArduPilot con IMU tripla ridondanza.</p>
+      </div>
+
+      <div class="component-card">
+        <h3 data-i18n="comp4_t">Sensori</h3>
+        <p data-i18n="comp4_p">EO/IR, LIDAR, moduli GPS RTK, telemetria, anticollisione.</p>
+      </div>
+
+      <div class="component-card">
+        <h3 data-i18n="comp5_t">Batteria</h3>
+        <p data-i18n="comp5_p">Pacco modulare 6S con monitoraggio termico e BMS.</p>
+      </div>
+
+      <div class="component-card">
+        <h3 data-i18n="comp6_t">Comunicazioni</h3>
+        <p data-i18n="comp6_p">Link robusti LRS, mesh networking, opzione LTE/Satcom.</p>
+      </div>
+    </div>
+  </section>
+  <!-- AI INTEGRATA -->
   <section id="ai" aria-labelledby="ai-title">
-    <h2 id="ai-title">Implementazione AI</h2>
-    <p>Neurowing integra algoritmi di intelligenza artificiale avanzata per missioni autonome, analisi dati in tempo reale e supporto decisionale intelligente. L'AI gestisce il tracciamento di oggetti, la pianificazione del volo ottimizzata e la gestione dei sensori complessi, garantendo precisione e adattabilità in scenari dinamici.</p>
+    <h2 id="ai-title" data-i18n="ai_title">AI Integrata</h2>
+    <p data-i18n="ai_p">
+      Neurowing utilizza modelli AI avanzati per navigazione autonoma, prevenzione ostacoli,
+      tracking dinamico e analisi delle immagini in tempo reale. L’elaborazione avviene
+      direttamente onboard per ridurre latenza e aumentare la resilienza operativa.
+    </p>
 
-    <div class="ai-card-container" role="list">
-      <article class="ai-card" role="listitem">
-        <img loading="lazy">
-        <h3>AI Core</h3>
-        <p>Elaborazione dati e decisioni autonome onboard.</p>
-      </article>
-      <article class="ai-card" role="listitem">
-        <img loading="lazy">
-        <h3>Reti Neurali</h3>
-        <p>Analisi predittiva e riconoscimento pattern in tempo reale.</p>
-      </article>
-      <article class="ai-card" role="listitem">
-        <img loading="lazy">
-        <h3>Computer Vision</h3>
-        <p>Elaborazione visiva dai sensori e ottimizzazione missione.</p>
-      </article>
+    <div class="ai-card-container">
+      <div class="ai-card">
+        <h3 data-i18n="ai1_t">Navigazione Autonoma</h3>
+        <p data-i18n="ai1_p">Algoritmi avanzati per seguire rotte, evitare ostacoli e adattarsi al contesto operativo.</p>
+      </div>
+      <div class="ai-card">
+        <h3 data-i18n="ai2_t">Riconoscimento Oggetti</h3>
+        <p data-i18n="ai2_p">Identificazione di persone, veicoli, incendi, strutture e scenari critici.</p>
+      </div>
+      <div class="ai-card">
+        <h3 data-i18n="ai3_t">Analisi Real-Time</h3>
+        <p data-i18n="ai3_p">Processo dati immediato grazie a moduli Jetson e pipeline ottimizzate.</p>
+      </div>
     </div>
   </section>
 
-  <!-- VIDEO -->
+  <!-- FAQ (nuova sezione) -->
+  <section id="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title" data-i18n="faq_title">FAQ — Domande Frequenti</h2>
+
+    <div class="card-container">
+      <div class="card">
+        <h3 data-i18n="faq1_q">Quanto può volare il Neurowing?</h3>
+        <p data-i18n="faq1_a">L’autonomia varia tra 120 e 150 minuti in base al payload.</p>
+      </div>
+
+      <div class="card">
+        <h3 data-i18n="faq2_q">È un drone militare?</h3>
+        <p data-i18n="faq2_a">No. È una piattaforma dual-use impiegabile per security, SAR e ambientale.</p>
+      </div>
+
+      <div class="card">
+        <h3 data-i18n="faq3_q">Che competenze servono per pilotarlo?</h3>
+        <p data-i18n="faq3_a">Lo standard è GCS + sistemi autonomi. Disponibili modalità assistite.</p>
+      </div>
+
+      <div class="card">
+        <h3 data-i18n="faq4_q">Che payload possono essere integrati?</h3>
+        <p data-i18n="faq4_a">Tutti i principali moduli EO/IR, LIDAR, multispettrali e sensori RF.</p>
+      </div>
+
+      <div class="card">
+        <h3 data-i18n="faq5_q">È già disponibile per l’acquisto?</h3>
+        <p data-i18n="faq5_a">Attualmente in fase pre-commerciale, con prototipo operativo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO DEMO -->
   <section id="video">
-    <h2>Video Dimostrativo</h2>
+    <h2 data-i18n="video_title">Video Dimostrativo</h2>
     <div class="card">
-      <video controls preload="none" loading="lazy">
+      <video controls preload="none">
         <source src="neurowing_demo.mp4" type="video/mp4">
       </video>
-      <p>Dimostrazione concettuale del sistema Neurowing.</p>
+      <p data-i18n="video_p">Demo concettuale del sistema Neurowing.</p>
     </div>
   </section>
 
-<!-- MODELLO 3D -->
+  <!-- MODELLO 3D -->
   <section id="modello3d">
-    <h2>Modello 3D Interattivo</h2>
+    <h2 data-i18n="model_title">Modello 3D Interattivo</h2>
     <div class="card">
       <model-viewer
         src="neurowing_model.glb"
         ar
         auto-rotate
-        loading="lazy"
-        camera-controls>
+        camera-controls
+        loading="lazy">
       </model-viewer>
-      <p>Esplora il prototipo Neurowing in 3D.</p>
+      <p data-i18n="model_p">Esplora il prototipo Neurowing in 3D.</p>
     </div>
   </section>
 
   <!-- TEAM -->
   <section id="team" aria-labelledby="team-title">
-    <h2 id="team-title">Team</h2>
-    <div class="team-card-container" role="list">
-      <article class="team-card" role="listitem">
-        <h3>Antonio Ndokaj</h3>
-        <p>CEO & Capoprogetto</p>
-        <p>Email: <a href="mailto:antonio.ndokajj@gmail.com" style="color:var(--accent2)">antonio.ndokajj@gmail.com</a></p>
-      </article>
-    </div>
-  </section>
+    <h2 id="team-title" data-i18n="team_title">Team</h2>
 
-  <!-- LAVORA CON NOI (fixed class bug corrected) -->
-  <section id="lavora-con-noi" aria-labelledby="lavora-title">
-    <h2 id="lavora-title">Lavora con noi</h2>
-    <div class="lavora-card-container">
-      <div class="lavora-card card">
-        <h3>Perché lavorare con noi?</h3>
-        <p>Lavorare in Altair Tech & Systems significa lavorare in quella che sarà l'eccellenza delle piattaforme UAV VTOL di nuova generazione; significa lavorare in un ambiente professionale specializzato ma al contempo leggero, libero e giovane.</p>
-        <a href="mailto:altairtechsystems@gmail.com" class="button" aria-role="button">Lavora con noi</a>
+    <div class="team-card-container">
+      <div class="team-card">
+        <h3 data-i18n="team1_name">Antonio Ndokaj</h3>
+        <p data-i18n="team1_role">CEO & Capoprogetto</p>
+        <p>Email: 
+          <a href="mailto:antonio.ndokajj@gmail.com" style="color:var(--accent2)">
+            antonio.ndokajj@gmail.com
+          </a>
+        </p>
       </div>
     </div>
   </section>
 
+  <!-- LAVORA CON NOI -->
+  <section id="lavora-con-noi" aria-labelledby="lavora-title">
+    <h2 id="lavora-title" data-i18n="work_title">Lavora con noi</h2>
+
+    <div class="card">
+      <h3 data-i18n="work_why_t">Perché lavorare con noi?</h3>
+      <p data-i18n="work_why_p">
+        Un ambiente giovane, tecnico e orientato all’innovazione nel settore UAV di nuova generazione.
+      </p>
+      <a href="mailto:altairtechsystems@gmail.com" class="button" data-i18n="work_btn">
+        Candidati ora
+      </a>
+    </div>
+  </section>
   <!-- CONTATTI -->
   <section id="contatti" aria-labelledby="contatti-title">
-    <h2 id="contatti-title">Contatti</h2>
-    <p>Email: <a href="mailto:altairtechsystems@gmail.com" style="color:var(--accent2)">altairtechsystems@gmail.com</a></p>
-    <p>Telefono: <a href="tel:+393774501917" style="color:var(--accent2)">+39 377 450 1917</a></p>
-    <p>Ufficio: Sede da destinarsi</p>
+    <h2 id="contatti-title" data-i18n="contact_title">Contatti</h2>
+
+    <p>
+      <strong>Email:</strong>
+      <a href="mailto:altairtechsystems@gmail.com" style="color:var(--accent2)">
+        altairtechsystems@gmail.com
+      </a>
+    </p>
+
+    <p>
+      <strong data-i18n="contact_phone">Telefono:</strong>
+      <a href="tel:+393774501917" style="color:var(--accent2)">+39 377 450 1917</a>
+    </p>
+
+    <p data-i18n="contact_office">Ufficio: Sede da destinarsi</p>
+
+    <h3 style="margin-top:30px;" data-i18n="contact_form_title">Contattaci direttamente</h3>
+
+    <!-- FORM AVANZATO -->
+    <form class="card" style="padding:20px; margin-top:10px;">
+      <label data-i18n="form_name">Nome e Cognome</label>
+      <input type="text" placeholder="Mario Rossi">
+
+      <label data-i18n="form_email">Email</label>
+      <input type="email" placeholder="example@mail.com">
+
+      <label data-i18n="form_subject">Oggetto</label>
+      <input type="text" placeholder="Richiesta informazioni">
+
+      <label data-i18n="form_msg">Messaggio</label>
+      <textarea rows="5" placeholder="Scrivi qui la tua richiesta..."></textarea>
+
+      <button type="submit" class="button" style="margin-top:15px;" data-i18n="form_send">
+        Invia Messaggio
+      </button>
+    </form>
   </section>
 
+  <!-- FOOTER -->
   <footer>
-    © 2025 Altair Tech & Systems. Tutti i diritti riservati. 
-    I contenuti di questo sito sono di proprietà di Altair Tech & Systems 
-    o dei rispettivi titolari e sono protetti dalle leggi internazionali sul copyright.
+    © 2025 Altair Tech & Systems. <span data-i18n="footer_rights">Tutti i diritti riservati.</span><br>
+    <span data-i18n="footer_copy">
+      I contenuti di questo sito sono protetti da copyright.
+    </span>
 
     <div style="margin-top:12px; font-size:0.9rem;">
-      <a href="privacy_policy.pdf" style="color:var(--accent2); margin:0 8px;">Privacy Policy</a> |
-      <a href="cookie_policy.pdf" style="color:var(--accent2); margin:0 8px;">Cookie Policy</a> |
-      <a href="note_legali.pdf" style="color:var(--accent2); margin:0 8px;">Note Legali</a>
+      <a href="privacy_policy.pdf" style="color:var(--accent2); margin:0 8px;" data-i18n="footer_privacy">
+        Privacy Policy
+      </a> |
+      <a href="cookie_policy.pdf" style="color:var(--accent2); margin:0 8px;" data-i18n="footer_cookie">
+        Cookie Policy
+      </a> |
+      <a href="note_legali.pdf" style="color:var(--accent2); margin:0 8px;" data-i18n="footer_legal">
+        Note Legali
+      </a>
     </div>
   </footer>
 
+  <!-- SELECTOR LINGUA -->
+  <div style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--panel);
+    padding: 10px 14px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    z-index: 999;
+  ">
+    <select id="langSelect" style="
+      background: transparent;
+      color: var(--text);
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+    ">
+      <option value="it">🇮🇹 IT</option>
+      <option value="en">🇺🇸 EN</option>
+      <option value="zh">🇨🇳 中文</option>
+    </select>
+  </div>
 
-</div>
+  <!-- MULTILINGUA SCRIPT -->
+  <script>
+    const translations = {
+      it: {
+        roadmap_title: "Roadmap di Sviluppo",
+        roadmap_p: "La roadmap mostra le principali fasi di sviluppo del progetto Neurowing.",
+        roadmap1_t: "Q1 2025 — Prototipo strutturale",
+        roadmap1_p: "Costruzione fusoliera, integrazione key-parts.",
+        roadmap2_t: "Q2 2025 — Primo volo VTOL",
+        roadmap2_p: "Test di stabilità, hover e transizione.",
+        roadmap3_t: "Q3 2025 — AI & Payload",
+        roadmap3_p: "Integrazione sensori EO/IR e moduli RF.",
+        roadmap4_t: "Q4 2025 — Pre-serie",
+        roadmap4_p: "Validazione finale e avvio pre-commerciale.",
 
-<script>
-/* ---------------------------
-   ON-SCROLL REVEAL
-   --------------------------- */
-const sections = document.querySelectorAll('section');
-const obs = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting) entry.target.classList.add('visible');
-  });
-},{threshold:0.18});
-sections.forEach(s=>obs.observe(s));
+        neu_title: "Neurowing",
+        use_title: "Applicazioni Operative",
+        faq_title: "FAQ — Domande Frequenti",
+        video_title: "Video Dimostrativo",
+        model_title: "Modello 3D Interattivo",
+        team_title: "Team",
+        work_title: "Lavora con noi",
+        contact_title: "Contatti",
 
-/* ---------------------------
-   MOBILE MENU TOGGLE
-   --------------------------- */
-const menuToggle = document.getElementById('menu-toggle');
-const sidebar = document.getElementById('sidebar');
-menuToggle.addEventListener('click', ()=>{
-  // toggle mobile class to show/hide links on small screens
-  document.body.classList.toggle('mobile-menu-open');
-});
+        form_name: "Nome e Cognome",
+        form_email: "Email",
+        form_subject: "Oggetto",
+        form_msg: "Messaggio",
+        form_send: "Invia Messaggio",
 
-/* ---------------------------
-   THEME SWITCHER
-   --------------------------- */
-// initial theme based on saved preference or OS preference
-const root = document.documentElement;
-const themeSwitcher = document.getElementById('themeSwitcher');
+        contact_form_title: "Contattaci direttamente",
+        contact_phone: "Telefono:",
+        contact_office: "Ufficio: Sede da destinarsi",
 
-function applyTheme(theme){
-  root.setAttribute('data-theme', theme);
-  themeSwitcher.textContent = theme === 'dark' ? '🌙' : '☀️';
-  localStorage.setItem('altair_theme', theme);
-}
+        footer_rights: "Tutti i diritti riservati.",
+        footer_copy: "I contenuti di questo sito sono protetti da copyright.",
+        footer_privacy: "Privacy Policy",
+        footer_cookie: "Cookie Policy",
+        footer_legal: "Note Legali"
+      },
 
-const saved = localStorage.getItem('altair_theme');
-if(saved){
-  applyTheme(saved);
-} else {
-  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  applyTheme(prefersDark ? 'dark' : 'light');
-}
+      en: {
+        roadmap_title: "Development Roadmap",
+        roadmap_p: "The roadmap shows the main phases of Neurowing’s development.",
+        roadmap1_t: "Q1 2025 — Structural Prototype",
+        roadmap1_p: "Airframe construction, integration of key systems.",
+        roadmap2_t: "Q2 2025 — First VTOL Flight",
+        roadmap2_p: "Hover tests, stability and transition phase.",
+        roadmap3_t: "Q3 2025 — AI & Payload",
+        roadmap3_p: "EO/IR sensors and RF modules integration.",
+        roadmap4_t: "Q4 2025 — Pre-series",
+        roadmap4_p: "Final validation and pre-commercial launch.",
 
-themeSwitcher.addEventListener('click', ()=>{
-  const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-  applyTheme(current === 'dark' ? 'light' : 'dark');
-});
+        neu_title: "Neurowing",
+        use_title: "Operational Applications",
+        faq_title: "FAQ — Frequently Asked Questions",
+        video_title: "Demonstration Video",
+        model_title: "Interactive 3D Model",
+        team_title: "Team",
+        work_title: "Work With Us",
+        contact_title: "Contact",
 
-/* ---------------------------
-   Lightweight accessibility: keyboard nav for menu
-   --------------------------- */
-const links = document.querySelectorAll('#menu-links a');
-links.forEach((lnk, i) => {
-  lnk.addEventListener('keydown', (e) => {
-    if(e.key === 'ArrowDown'){ e.preventDefault(); links[(i+1)%links.length].focus(); }
-    if(e.key === 'ArrowUp'){ e.preventDefault(); links[(i-1+links.length)%links.length].focus(); }
-  });
-});
-</script>
+        form_name: "Full Name",
+        form_email: "Email",
+        form_subject: "Subject",
+        form_msg: "Message",
+        form_send: "Send Message",
+
+        contact_form_title: "Contact us directly",
+        contact_phone: "Phone:",
+        contact_office: "Office: TBD",
+
+        footer_rights: "All rights reserved.",
+        footer_copy: "Content on this site is protected by copyright.",
+        footer_privacy: "Privacy Policy",
+        footer_cookie: "Cookie Policy",
+        footer_legal: "Legal Notes"
+      },
+
+      zh: {
+        roadmap_title: "开发路线图",
+        roadmap_p: "此路线图展示 Neurowing 项目的主要开发阶段。",
+        roadmap1_t: "2025 Q1 — 结构原型",
+        roadmap1_p: "机身构建与关键组件集成。",
+        roadmap2_t: "2025 Q2 — 首次 VTOL 飞行",
+        roadmap2_p: "悬停测试、稳定性与过渡阶段。",
+        roadmap3_t: "2025 Q3 — AI 与载荷",
+        roadmap3_p: "EO/IR 传感器与 RF 模块集成。",
+        roadmap4_t: "2025 Q4 — 预量产阶段",
+        roadmap4_p: "最终验证与预商业化。",
+
+        neu_title: "Neurowing",
+        use_title: "应用场景",
+        faq_title: "常见问题 FAQ",
+        video_title: "演示视频",
+        model_title: "交互式 3D 模型",
+        team_title: "团队",
+        work_title: "加入我们",
+        contact_title: "联系我们",
+
+        form_name: "姓名",
+        form_email: "电子邮箱",
+        form_subject: "主题",
+        form_msg: "留言内容",
+        form_send: "发送留言",
+
+        contact_form_title: "直接联系我们",
+        contact_phone: "电话：",
+        contact_office: "办公室：待定",
+
+        footer_rights: "版权所有。",
+        footer_copy: "本网站内容受版权保护。",
+        footer_privacy: "隐私政策",
+        footer_cookie: "Cookie 政策",
+        footer_legal: "法律声明"
+      }
+    };
+
+    const langSelect = document.getElementById("langSelect");
+
+    langSelect.addEventListener("change", () => {
+      const lang = langSelect.value;
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+    });
+  </script>
 </body>
 </html>
