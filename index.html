@@ -79,6 +79,30 @@
     
     <style>
         /* CSS Variables and Base Styles */
+
+        /* FIX: leggibilità select/option in dark mode */
+[data-theme="dark"] select.form-input,
+[data-theme="dark"] .form-input,
+[data-theme="dark"] .form-textarea {
+    background-color: rgba(255,255,255,0.08) !important;
+    color: #fff !important;
+}
+
+[data-theme="dark"] select.form-input option {
+    background-color: #0f172a !important; /* blu molto scuro coerente con il tuo design */
+    color: #fff !important;
+}
+
+/* FIX: testo gradient in dark più leggibile */
+[data-theme="dark"] .text-gradient {
+    -webkit-text-fill-color: transparent !important;
+    background-image: linear-gradient(135deg, #60a5fa, #3b82f6) !important;
+}
+
+/* FIX: hero title contrast */
+[data-theme="dark"] .hero-title {
+    color: #ffffff !important;
+}        
         :root {
             --bg-dark: #0a0e1a;
             --bg-light: #f8fafc;
@@ -966,6 +990,7 @@
             border-left: 4px solid var(--accent-primary);
         }
     </style>
+   
 </head>
 <body>
     <!-- Loader -->
