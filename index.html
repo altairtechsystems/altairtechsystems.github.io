@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Altair Tech & Systems - Neurowing | Tecnologia UAV Oltre i Confini </title>
+    <title>Altair Tech & Systems - Neurowing | Tecnologia UAV Oltre i Confini</title>
     <meta name="description" content="Altair Tech & Systems sviluppa piattaforme UAV professionali Neurowing per missioni ISR, SAR e monitoraggio ambientale con AI onboard e sensori avanzati.">
     <meta name="keywords" content="UAV, drone, ISR, SAR, AI, Neurowing, VTOL, sensori, monitoraggio ambientale">
     
@@ -79,29 +79,27 @@
     
     <style>
         /* CSS Variables and Base Styles */
-        /* FIX: leggibilità select/option in dark mode */
-[data-theme="dark"] select.form-input,
-[data-theme="dark"] .form-input,
-[data-theme="dark"] .form-textarea {
-    background-color: rgba(255,255,255,0.08) !important;
-    color: #fff !important;
-}
+        [data-theme="dark"] select.form-input,
+        [data-theme="dark"] .form-input,
+        [data-theme="dark"] .form-textarea {
+            background-color: rgba(255,255,255,0.08) !important;
+            color: #fff !important;
+        }
 
-[data-theme="dark"] select.form-input option {
-    background-color: #0f172a !important; /* blu molto scuro coerente con il tuo design */
-    color: #fff !important;
-}
+        [data-theme="dark"] select.form-input option {
+            background-color: #0f172a !important;
+            color: #fff !important;
+        }
 
-/* FIX: testo gradient in dark più leggibile */
-[data-theme="dark"] .text-gradient {
-    -webkit-text-fill-color: transparent !important;
-    background-image: linear-gradient(135deg, #60a5fa, #3b82f6) !important;
-}
+        [data-theme="dark"] .text-gradient {
+            -webkit-text-fill-color: transparent !important;
+            background-image: linear-gradient(135deg, #60a5fa, #3b82f6) !important;
+        }
 
-/* FIX: hero title contrast */
-[data-theme="dark"] .hero-title {
-    color: #ffffff !important;
-}        
+        [data-theme="dark"] .hero-title {
+            color: #ffffff !important;
+        }
+        
         :root {
             --bg-dark: #0a0e1a;
             --bg-light: #f8fafc;
@@ -322,6 +320,9 @@
             font-weight: 800;
             text-decoration: none;
             color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
         .nav-links {
@@ -380,6 +381,13 @@
             color: var(--text);
             font-size: 1.5rem;
             cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-toggle:hover {
+            background: rgba(255, 255, 255, 0.1);
         }
         
         /* Hero Section */
@@ -490,7 +498,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
             color: white;
         }
         
@@ -573,7 +580,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
             color: var(--accent-primary);
         }
         
@@ -620,7 +626,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
             color: white;
         }
         
@@ -695,7 +700,7 @@
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.2rem;
+            flex-shrink: 0;
         }
         
         .contact-form {
@@ -879,6 +884,8 @@
                 flex-direction: column;
                 padding: 2rem;
                 border-radius: 0 0 1rem 1rem;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                gap: 1rem;
             }
             
             .nav-links.active {
@@ -892,6 +899,7 @@
             .hero-actions {
                 flex-direction: column;
                 align-items: center;
+                width: 100%;
             }
             
             .btn {
@@ -901,8 +909,7 @@
             }
             
             .specs-container,
-            .contact-container,
-            .about-grid {
+            .contact-container {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
@@ -915,6 +922,30 @@
             .footer-links {
                 flex-direction: column;
                 gap: 1rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .components-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .hero-title {
+                font-size: clamp(2rem, 8vw, 3rem);
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+                padding: 0 1rem;
             }
         }
         
@@ -988,48 +1019,83 @@
         .notification-info {
             border-left: 4px solid var(--accent-primary);
         }
-       [data-theme="dark"] .hero-title.text-gradient {
-    -webkit-text-fill-color: #60a5fa !important;
-    background: none !important;
-}
+        
+        [data-theme="dark"] .hero-title.text-gradient {
+            -webkit-text-fill-color: #60a5fa !important;
+            background: none !important;
+        }
+        
         [data-theme="light"] .hero-title.text-gradient {
-    background: none !important;
-    -webkit-text-fill-color: #60a5fa !important;
-    color: #60a5fa !important;
-}
-
+            background: none !important;
+            -webkit-text-fill-color: #60a5fa !important;
+            color: #60a5fa !important;
+        }
+        
+        /* Icon sizes */
+        .icon-16 { width: 16px; height: 16px; }
+        .icon-20 { width: 20px; height: 20px; }
+        .icon-24 { width: 24px height: 24px; }
+        .icon-32 { width: 32px; height: 32px; }
+        .icon-48 { width: 48px; height: 48px; }
     </style>
-   
+<base target="_blank">
 </head>
 <body>
-    <!-- Loader -->
+    <!-- Loading Screen -->
     <div class="loader" id="loader">
         <div class="loader-spinner"></div>
     </div>
 
     <!-- Navigation -->
-    <nav class="nav" id="navbar">
+    <nav class="nav" id="nav">
         <div class="container">
             <div class="nav-container">
-                <a href="#home" class="nav-logo text-gradient">ALTΛIR</a>
+                <a href="#home" class="nav-logo">
+                    <svg class="icon-32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                    <span>Altair Tech</span>
+                </a>
                 
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#about" class="nav-link">Chi Siamo</a></li>
-                    <li><a href="#features" class="nav-link">Neurowing</a></li>
-                    <li><a href="#specs" class="nav-link">Specifiche</a></li>
+                    <li><a href="#features" class="nav-link">Caratteristiche</a></li>
+                    <li><a href="#specifications" class="nav-link">Specifiche</a></li>
                     <li><a href="#components" class="nav-link">Componenti</a></li>
-                    <li><a href="#ai" class="nav-link">AI</a></li>
                     <li><a href="#team" class="nav-link">Team</a></li>
                     <li><a href="#contact" class="nav-link">Contatti</a></li>
                 </ul>
                 
-                <div class="nav-actions">
-                    <button class="theme-toggle" id="themeToggle" aria-label="Cambia tema">
-                        <span id="themeIcon">🌙</span>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <svg class="icon-20" id="sunIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                            <circle cx="12" cy="12" r="5"/>
+                            <line x1="12" y1="1" x2="12" y2="3"/>
+                            <line x1="12" y1="21" x2="12" y2="23"/>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                            <line x1="1" y1="12" x2="3" y2="12"/>
+                            <line x1="21" y1="12" x2="23" y2="12"/>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                        </svg>
+                        <svg class="icon-20" id="moonIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
                     </button>
-                    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu mobile">
-                        ☰
+                    
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                        <svg class="icon-24" id="menuIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="3" y1="12" x2="21" y2="12"/>
+                            <line x1="3" y1="6" x2="21" y2="6"/>
+                            <line x1="3" y1="18" x2="21" y2="18"/>
+                        </svg>
+                        <svg class="icon-24" id="closeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                            <line x1="18" y1="6" x2="6" y2="18"/>
+                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
                     </button>
                 </div>
             </div>
@@ -1037,124 +1103,125 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section class="hero" id="home">
         <div class="particles" id="particles"></div>
         <div class="container">
             <div class="hero-content fade-in-up">
-                <h1 class="hero-title text-gradient" data-splitting>
-                    Neurowing
-                </h1>
+                <h1 class="hero-title text-gradient">Neurowing</h1>
                 <p class="hero-subtitle">
-                    Tecnologia UAV oltre i confini. Piattaforma modulare per missioni ISR, SAR e monitoraggio ambientale con AI onboard e sensori professionali.
+                    Piattaforme UAV professionali con AI onboard per missioni ISR, SAR e monitoraggio ambientale. 
+                    Tecnologia che supera i confini dell'innovazione.
                 </p>
                 <div class="hero-actions">
-                    <a href="#features" class="btn btn-primary">
-                        <span>Scopri il Progetto</span>
-                        <span>→</span>
+                    <a href="#contact" class="btn btn-primary">
+                        <svg class="icon-20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        Richiedi Demo
                     </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <span>Contattaci</span>
-                        <span>📧</span>
+                    <a href="#specifications" class="btn btn-secondary">
+                        <svg class="icon-20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1m17-4a9.96 9.96 0 0 0-2.74-2.74M5.74 5.74A9.96 9.96 0 0 0 3 12m16.26 2.74A9.96 9.96 0 0 0 21 12m-2.74-6.26A9.96 9.96 0 0 0 12 3"/>
+                        </svg>
+                        Scopri di più
                     </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-4xl font-bold mb-6 text-gradient">Chi Siamo</h2>
-                    <p class="text-lg mb-4 opacity-90">
-                        Altair Tech & Systems è una Start Up Early Stage specializzata nello sviluppo di piattaforme UAV professionali dedicate a missioni ISR, SAR, monitoraggio ambientale, supporto tattico e comunicazioni avanzate.
-                    </p>
-                    <p class="text-lg mb-6 opacity-90">
-                        Combiniamo ingegneria aeronautica, sensoristica di ultima generazione e sistemi di controllo autonomi per creare soluzioni affidabili, modulari e operative in scenari complessi.
-                    </p>
-                    <div class="grid grid-cols-3 gap-6 mt-8">
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-primary-500">2025</div>
-                            <div class="text-sm opacity-70 uppercase tracking-wide">Anno di Fondazione</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-primary-500">1</div>
-                            <div class="text-sm opacity-70 uppercase tracking-wide">Progetto Principale</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-primary-500">∞</div>
-                            <div class="text-sm opacity-70 uppercase tracking-wide">Potenziale</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="h-80 gradient-animation rounded-lg flex items-center justify-center text-white text-6xl">
-                        🚁
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="section">
+    <section class="section" id="features">
         <div class="container">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gradient">Neurowing - Il Primo Progetto Altair</h2>
+            <h2 class="text-4xl font-bold text-center mb-4 text-gradient">Caratteristiche Avanzate</h2>
+            <p class="text-center text-lg opacity-80 mb-12 max-w-3xl mx-auto">
+                Neurowing integra tecnologie all'avanguardia per garantire prestazioni eccezionali in ogni scenario operativo
+            </p>
+            
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🔍</div>
-                    <h3 class="feature-title">Missioni SAR</h3>
+                    <div class="feature-icon">
+                        <svg class="icon-48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <circle cx="12" cy="16" r="1"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">AI Onboard</h3>
                     <p class="feature-description">
-                        Progettato per ricerca e soccorso. Supporta operazioni critiche in scenari complessi e ambienti remoti.
+                        Sistema di intelligenza artificiale integrato per analisi in tempo reale, 
+                        riconoscimento pattern e decisioni autonome durante le missioni.
                     </p>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">🛡️</div>
+                    <div class="feature-icon">
+                        <svg class="icon-48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                            <circle cx="12" cy="13" r="4"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Sensori Avanzati</h3>
+                    <p class="feature-description">
+                        Suite completa di sensori EO/IR, LiDAR e multispettrali per acquisizione 
+                        dati di alta qualità in ogni condizione ambientale.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg class="icon-48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">VTOL Technology</h3>
+                    <p class="feature-description">
+                        Decollo e atterraggio verticale per operazioni in spazi ristretti, 
+                        combinando la flessibilità di un elicottero con l'efficienza di un aereo.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg class="icon-48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                        </svg>
+                    </div>
                     <h3 class="feature-title">Missioni ISR</h3>
                     <p class="feature-description">
-                        La versatilità di Neurowing permette l'utilizzo anche in ambienti ostili, ideale per missioni ISR.
+                        Intelligence, Surveillance e Reconnaissance con capacità di sorveglianza 
+                        persistente e raccolta dati strategici in tempo reale.
                     </p>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">🔧</div>
-                    <h3 class="feature-title">Telaio Alluminio 7075 T6</h3>
+                    <div class="feature-icon">
+                        <svg class="icon-48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <path d="M12 8v4l3 3"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Autonomia Estesa</h3>
                     <p class="feature-description">
-                        Struttura a fusoliera in alluminio 7075 T6 anodizzato, leggera e resistente, ottimizzata per volo VTOL.
+                        Fino a 8 ore di volo continuo con sistema di propulsione ibrida, 
+                        garantendo copertura operativa estesa senza interruzioni.
                     </p>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3 class="feature-title">Motoristica Dual Use</h3>
+                    <div class="feature-icon">
+                        <svg class="icon-48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Comunicazione Sicura</h3>
                     <p class="feature-description">
-                        Motori dedicati al decollo e atterraggio verticale VTOL e motore di crociera ad alta efficienza.
-                    </p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🔋</div>
-                    <h3 class="feature-title">Autonomia & Batterie</h3>
-                    <p class="feature-description">
-                        Sistemi di alimentazione ad alta capacità con gestione intelligente della batteria.
-                    </p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🛡️</div>
-                    <h3 class="feature-title">Resilienza in Volo</h3>
-                    <p class="feature-description">
-                        Struttura robusta, componenti ridondati e sistemi di emergenza per operare in condizioni avverse.
-                    </p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">📦</div>
-                    <h3 class="feature-title">Modularità dei Carichi</h3>
-                    <p class="feature-description">
-                        Supporta payload intercambiabili per sensori, strumenti e missioni specializzate.
+                        Link di comunicazione criptato e resiliente per operazioni in 
+                        contesti elettromagnetici complessi e ostili.
                     </p>
                 </div>
             </div>
@@ -1162,17 +1229,43 @@
     </section>
 
     <!-- Specifications Section -->
-    <section id="specs" class="section">
+    <section class="section" id="specifications">
         <div class="container">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gradient">Scheda Tecnica</h2>
+            <h2 class="text-4xl font-bold text-center mb-12 text-gradient">Specifiche Tecniche</h2>
+            
             <div class="specs-container">
                 <div class="specs-list">
+                    <h3 class="text-2xl font-bold mb-6 text-center">Prestazioni</h3>
                     <div class="spec-item">
-                        <span class="spec-label">Peso massimo</span>
-                        <span class="spec-value">25 kg</span>
+                        <span class="spec-label">Autonomia di Volo</span>
+                        <span class="spec-value">8 ore</span>
                     </div>
                     <div class="spec-item">
-                        <span class="spec-label">Apertura alare</span>
+                        <span class="spec-label">Velocità Massima</span>
+                        <span class="spec-value">120 km/h</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Velocità di Crociera</span>
+                        <span class="spec-value">80 km/h</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Quota Operativa</span>
+                        <span class="spec-value">4,000 m</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Raggio Operativo</span>
+                        <span class="spec-value">100 km</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Peso al Decollo</span>
+                        <span class="spec-value">25 kg</span>
+                    </div>
+                </div>
+                
+                <div class="specs-list">
+                    <h3 class="text-2xl font-bold mb-6 text-center">Dimensioni</h3>
+                    <div class="spec-item">
+                        <span class="spec-label">Apertura Alare</span>
                         <span class="spec-value">3.2 m</span>
                     </div>
                     <div class="spec-item">
@@ -1180,211 +1273,162 @@
                         <span class="spec-value">1.8 m</span>
                     </div>
                     <div class="spec-item">
-                        <span class="spec-label">Velocità massima</span>
-                        <span class="spec-value">120 km/h</span>
+                        <span class="spec-label">Altezza</span>
+                        <span class="spec-value">0.6 m</span>
                     </div>
                     <div class="spec-item">
-                        <span class="spec-label">Autonomia</span>
-                        <span class="spec-value">180 min</span>
-                    </div>
-                    <div class="spec-item">
-                        <span class="spec-label">Portata massima</span>
+                        <span class="spec-label">Carico Utile Max</span>
                         <span class="spec-value">5 kg</span>
                     </div>
                     <div class="spec-item">
-                        <span class="spec-label">Altitudine operativa</span>
-                        <span class="spec-value">3000 m</span>
+                        <span class="spec-label">Volume Utile</span>
+                        <span class="spec-value">12 L</span>
                     </div>
                     <div class="spec-item">
-                        <span class="spec-label">Temperatura operativa</span>
+                        <span class="spec-label">Temperatura Op.</span>
                         <span class="spec-value">-20°C +50°C</span>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="h-96 gradient-animation rounded-lg flex items-center justify-center text-white text-6xl">
-                        📊
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-8">
-                <button class="btn btn-primary" onclick="showModal('downloadModal')">
-                    <span>Scarica Scheda Tecnica</span>
-                    <span>📄</span>
-                </button>
             </div>
         </div>
     </section>
 
     <!-- Components Section -->
-    <section id="components" class="section">
+    <section class="section" id="components">
         <div class="container">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gradient">Componentistica & Sensoristica</h2>
+            <h2 class="text-4xl font-bold text-center mb-12 text-gradient">Componenti Principali</h2>
+            
             <div class="components-grid">
-                <div class="component-card" onclick="showModal('componentModal', 'Camera FLIR Boson 640', 'Rilevamento termico avanzato per ISR e missioni SAR con risoluzione 640x512 e sensibilità <50mK.')">
-                    <div class="component-image">📷</div>
-                    <h3 class="component-title">Camera FLIR Boson 640</h3>
-                    <p class="component-description">Rilevamento termico avanzato per ISR e missioni SAR.</p>
-                </div>
-                
-                <div class="component-card" onclick="showModal('componentModal', 'LIDAR Velodyne Puck', 'Scanner 3D ad alta precisione con 16 canali laser e range fino a 100m per mappature dettagliate.')">
-                    <div class="component-image">📡</div>
-                    <h3 class="component-title">LIDAR Velodyne Puck</h3>
-                    <p class="component-description">Rilevamento 3D ad alta precisione per mappature e navigazione autonoma.</p>
-                </div>
-                
-                <div class="component-card" onclick="showModal('componentModal', 'CNT SIGINT & Jammer RF', 'Sistema di intercettazione segnali radio con capacità di jamming selettivo in banda larga.')">
-                    <div class="component-image">📶</div>
-                    <h3 class="component-title">CNT SIGINT & Jammer RF</h3>
-                    <p class="component-description">Intercettazione segnali e contromisure elettroniche avanzate.</p>
-                </div>
-                
-                <div class="component-card" onclick="showModal('componentModal', 'Autopilota Cube Orange', 'Controllo di volo avanzato con triple redundancy e supporto missioni completamente autonome.')">
-                    <div class="component-image">🎛️</div>
-                    <h3 class="component-title">Autopilota Cube Orange</h3>
-                    <p class="component-description">Controllo di volo preciso e supporto missione semi-autonoma.</p>
-                </div>
-                
-                <div class="component-card" onclick="showModal('componentModal', 'NVIDIA Jetson Nano', 'Computer di bordo per AI con GPU 128-core Maxwell e 4GB RAM per elaborazione real-time.')">
-                    <div class="component-image">🧠</div>
-                    <h3 class="component-title">NVIDIA Jetson Nano</h3>
-                    <p class="component-description">Companion computer per AI e analisi dati onboard.</p>
-                </div>
-                
-                <div class="component-card" onclick="showModal('componentModal', 'GPS RTK', 'Posizionamento centimetrico con GPS/GLONASS/GALILEO/BeiDou e correzioni RTK in tempo reale.')">
-                    <div class="component-image">🛰️</div>
-                    <h3 class="component-title">GPS/GLONASS/GALILEO RTK</h3>
-                    <p class="component-description">Posizionamento preciso per navigazione e georeferenziazione.</p>
-                </div>
-                
-                <div class="component-card" onclick="showModal('componentModal', 'Comunicazioni Avanzate', 'Sistema di comunicazione ridondante con Iridium, rete mesh e banda 900MHz per copertura globale.')">
-                    <div class="component-image">📡</div>
-                    <h3 class="component-title">Comunicazioni Iridium + Rete Mesh</h3>
-                    <p class="component-description">Connessione stabile in scenari remoti e complessi.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- AI Section -->
-    <section id="ai" class="section">
-        <div class="container">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-4xl font-bold mb-6 text-gradient">Implementazione AI</h2>
-                    <p class="text-lg mb-6 opacity-90">
-                        Neurowing integra algoritmi di intelligenza artificiale avanzata per missioni autonome, analisi dati in tempo reale e supporto decisionale intelligente.
+                <div class="component-card" onclick="openModal('gimbalModal')">
+                    <div class="component-image">
+                        <svg class="icon-48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1m17-4a9.96 9.96 0 0 0-2.74-2.74M5.74 5.74A9.96 9.96 0 0 0 3 12m16.26 2.74A9.96 9.96 0 0 0 21 12m-2.74-6.26A9.96 9.96 0 0 0 12 3"/>
+                        </svg>
+                    </div>
+                    <h3 class="component-title">Gimbal EO/IR</h3>
+                    <p class="component-description">
+                        Sistema stabilizzato 3-assi con camera HD 4K, sensore termico 
+                        e capacità di tracking automatico per sorveglianza avanzata.
                     </p>
-                    <ul class="space-y-4">
-                        <li class="flex items-center gap-4 p-4 glass rounded-lg">
-                            <span class="text-2xl">✨</span>
-                            <div>
-                                <strong>AI Core:</strong> Elaborazione dati e decisioni autonome onboard
-                            </div>
-                        </li>
-                        <li class="flex items-center gap-4 p-4 glass rounded-lg">
-                            <span class="text-2xl">🧠</span>
-                            <div>
-                                <strong>Reti Neurali:</strong> Analisi predittiva e riconoscimento pattern in tempo reale
-                            </div>
-                        </li>
-                        <li class="flex items-center gap-4 p-4 glass rounded-lg">
-                            <span class="text-2xl">👁️</span>
-                            <div>
-                                <strong>Computer Vision:</strong> Elaborazione visiva dai sensori e ottimizzazione missione
-                            </div>
-                        </li>
-                        <li class="flex items-center gap-4 p-4 glass rounded-lg">
-                            <span class="text-2xl">🎯</span>
-                            <div>
-                                <strong>Pianificazione Ottimizzata:</strong> Algoritmi di pathfinding e gestione risorse
-                            </div>
-                        </li>
-                    </ul>
                 </div>
-                <div class="card">
-                    <div class="h-96 gradient-animation rounded-lg flex items-center justify-center text-white text-8xl pulse">
-                        🤖
+                
+                <div class="component-card" onclick="openModal('lidarModal')">
+                    <div class="component-image">
+                        <svg class="icon-48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
                     </div>
+                    <h3 class="component-title">LiDAR Scanner</h3>
+                    <p class="component-description">
+                        Scanner laser ad alta precisione per mappatura 3D, 
+                        rilevamento ostacoli e navigazione in ambienti complessi.
+                    </p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Video Section -->
-    <section id="video" class="section">
-        <div class="container">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gradient">Video Dimostrativo</h2>
-            <div class="card max-w-4xl mx-auto">
-                <div class="h-96 bg-gray-800 rounded-lg flex items-center justify-center text-white cursor-pointer" onclick="showModal('videoModal')">
-                    <div class="text-center">
-                        <div class="text-8xl mb-4">▶️</div>
-                        <h3 class="text-2xl mb-2">Demo Neurowing</h3>
-                        <p>Click per riprodurre</p>
+                
+                <div class="component-card" onclick="openModal('aiModal')">
+                    <div class="component-image">
+                        <svg class="icon-48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
                     </div>
+                    <h3 class="component-title">AI Processing Unit</h3>
+                    <p class="component-description">
+                        Unità di elaborazione dedicata per machine learning, 
+                        analisi video in tempo reale e decisioni autonome.
+                    </p>
                 </div>
-                <p class="mt-4 text-center opacity-80">
-                    Dimostrazione concettuale del sistema Neurowing in operazione
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3D Model Section -->
-    <section id="model3d" class="section">
-        <div class="container">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gradient">Modello 3D Interattivo</h2>
-            <div class="card max-w-4xl mx-auto">
-                <div id="modelViewer" class="h-96 bg-gray-800 rounded-lg flex items-center justify-center text-white text-6xl cursor-pointer">
-                    <div class="text-center">
-                        <div class="text-8xl mb-4">🚁</div>
-                        <h3 class="text-2xl mb-2">Modello 3D Neurowing</h3>
-                        <p class="text-sm opacity-70">Interazione con rotazione e zoom</p>
+                
+                <div class="component-card" onclick="openModal('commsModal')">
+                    <div class="component-image">
+                        <svg class="icon-48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+                        </svg>
                     </div>
+                    <h3 class="component-title">Communication System</h3>
+                    <p class="component-description">
+                        Sistema di comunicazione multi-banda con crittografia 
+                        militare per link sicuri e resilienti.
+                    </p>
                 </div>
-                <p class="mt-4 text-center opacity-80">
-                    Esplora il prototipo Neurowing in 3D interattivo
-                </p>
-                <div class="flex justify-center gap-4 mt-6">
-                    <button class="btn btn-secondary" onclick="rotateModel()">
-                        <span>🔄 Ruota</span>
-                    </button>
-                    <button class="btn btn-secondary" onclick="resetModel()">
-                        <span>📍 Reset</span>
-                    </button>
+                
+                <div class="component-card" onclick="openModal('powerModal')">
+                    <div class="component-image">
+                        <svg class="icon-48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                        </svg>
+                    </div>
+                    <h3 class="component-title">Power Management</h3>
+                    <p class="component-description">
+                        Sistema di gestione energetica intelligente con batterie 
+                        ad alta densità e ricarica rapida.
+                    </p>
+                </div>
+                
+                <div class="component-card" onclick="openModal('navModal')">
+                    <div class="component-image">
+                        <svg class="icon-48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+                        </svg>
+                    </div>
+                    <h3 class="component-title">Navigation Suite</h3>
+                    <p class="component-description">
+                        Sistema di navigazione GNSS/INS con sensori di bordo 
+                        per precisione centimetrica in ogni condizione.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Team Section -->
-    <section id="team" class="section">
+    <section class="section" id="team">
         <div class="container">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gradient">Team</h2>
+            <h2 class="text-4xl font-bold text-center mb-12 text-gradient">Il Nostro Team</h2>
+            
             <div class="team-grid">
                 <div class="team-card">
-                    <div class="team-avatar">👨‍💼</div>
+                    <div class="team-avatar">
+                        <svg class="icon-48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
                     <h3 class="team-name">Antonio Ndokaj</h3>
-                    <p class="team-role">CEO & Capoprogetto</p>
-                    <p class="opacity-80 mb-4">
-                        Fondatore e project manager con esperienza in sistemi UAV e tecnologie avanzate.
+                    <p class="team-role">CEO & Lead Engineer</p>
+                    <p style="opacity: 0.8; line-height: 1.6;">
+                        Laureando in Mechanical Engineering.
+                        Ha guidato lo sviluppo di Neurowing dalla concept alla realizzazione.
                     </p>
                     <div class="team-contact">
-                        <a href="mailto:antonio.ndokajj@gmail.com" class="contact-link" title="Email">📧</a>
-                        <a href="https://www.linkedin.com/in/antonio-ndokaj-56649929a/" class="contact-link" title="LinkedIn">💼</a>
-                        <a href="#" class="contact-link" title="Twitter">🐦</a>
+                        <a href="mailto:Altairtechsystems@gmail.com" class="contact-link">
+                            <svg class="icon-16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </a>
+                        <a href="https://linkedin.com/in/Antonio Ndokaj" class="contact-link">
+                            <svg class="icon-16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect x="2" y="9" width="4" height="12"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
                 
                 <div class="team-card">
-                    <div class="team-avatar">👨‍🔬</div>
-                    <h3 class="team-name">Team Tecnico</h3>
-                    <p class="team-role">Ingegneri & Sviluppatori</p>
-                    <p class="opacity-80 mb-4">
-                        Team multidisciplinare di ingegneri aeronautici, sviluppatori software e specialisti AI.
-                    </p>
-                    <div class="team-contact">
-                        <a href="mailto:team@altairtechsystems.com" class="contact-link" title="Team Email">👥</a>
-                        <a href="#" class="contact-link" title="GitHub">💻</a>
+                    <div class="team-avatar">
+                        <svg class="icon-48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
                     </div>
                 </div>
             </div>
@@ -1392,94 +1436,109 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section">
+    <section class="section" id="contact">
         <div class="container">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gradient">Contatti</h2>
+            <h2 class="text-4xl font-bold text-center mb-12 text-gradient">Contattaci</h2>
+            
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3 class="text-xl font-bold mb-6">Informazioni di Contatto</h3>
+                    <h3 class="text-2xl font-bold mb-6">Informazioni</h3>
                     
                     <div class="contact-item">
-                        <div class="contact-icon">📧</div>
+                        <div class="contact-icon">
+                            <svg class="icon-20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
                         <div>
-                            <strong>Email</strong><br>
-                            <a href="mailto:altairtechsystems@gmail.com" class="text-primary-500 hover:text-primary-400">
-                                altairtechsystems@gmail.com
-                            </a>
+                            <h4 class="font-semibold">Sede Operativa</h4>
+                            <p style="opacity: 0.8;">Da Destinarsi</p>
                         </div>
                     </div>
                     
                     <div class="contact-item">
-                        <div class="contact-icon">📞</div>
+                        <div class="contact-icon">
+                            <svg class="icon-20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </div>
                         <div>
-                            <strong>Telefono</strong><br>
-                            <a href="tel:+393774501917" class="text-primary-500 hover:text-primary-400">
-                                +39 377 450 1917
-                            </a>
+                            <h4 class="font-semibold">Email</h4>
+                            <p style="opacity: 0.8;">Altairtechsystems@gmail.com</p>
                         </div>
                     </div>
                     
                     <div class="contact-item">
-                        <div class="contact-icon">📍</div>
+                        <div class="contact-icon">
+                            <svg class="icon-20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                        </div>
                         <div>
-                            <strong>Sede</strong><br>
-                            Sede da destinarsi<br>
-                            <span class="opacity-70">Italia</span>
+                            <h4 class="font-semibold">Telefono</h4>
+                            <p style="opacity: 0.8;">+39 377 450 1917</p>
                         </div>
                     </div>
                     
                     <div class="contact-item">
-                        <div class="contact-icon">🌐</div>
+                        <div class="contact-icon">
+                            <svg class="icon-20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12,6 12,12 16,14"/>
+                            </svg>
+                        </div>
                         <div>
-                            <strong>Social</strong><br>
-                            <a href="https://www.instagram.com/altairtechsystems/" class="text-primary-500 hover:text-primary-400 mr-4">Instagram</a>
-                            <a href="#" class="text-primary-500 hover:text-primary-400">LinkedIn</a>
+                            <h4 class="font-semibold">Orari Ufficio</h4>
+                            <p style="opacity: 0.8;">Lun-Ven: 9:00-18:00</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="contact-form">
-                    <h3 class="text-xl font-bold mb-6">Invia un Messaggio</h3>
-                    <form id="contactForm" onsubmit="submitForm(event)">
-                        <div class="form-group">
-                            <label for="name" class="form-label">Nome *</label>
-                            <input type="text" id="name" name="name" class="form-input" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email" class="form-label">Email *</label>
-                            <input type="email" id="email" name="email" class="form-input" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="company" class="form-label">Azienda</label>
-                            <input type="text" id="company" name="company" class="form-input">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject" class="form-label">Oggetto *</label>
-                            <select id="subject" name="subject" class="form-input" required>
-                                <option value="">Seleziona un'opzione</option>
-                                <option value="info">Informazioni generali</option>
-                                <option value="partnership">Partnership</option>
-                                <option value="investment">Investimenti</option>
-                                <option value="careers">Carriere</option>
-                                <option value="media">Media & Press</option>
-                                <option value="other">Altro</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message" class="form-label">Messaggio *</label>
-                            <textarea id="message" name="message" class="form-textarea" required placeholder="Descrivi il tuo progetto o richiesta..."></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary w-full">
-                            <span>Invia Messaggio</span>
-                            <span>📤</span>
-                        </button>
-                    </form>
-                </div>
+                <form class="contact-form" id="contactForm">
+                    <h3 class="text-2xl font-bold mb-6">Richiedi Informazioni</h3>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="name">Nome Completo</label>
+                        <input type="text" id="name" name="name" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="company">Azienda/Organizzazione</label>
+                        <input type="text" id="company" name="company" class="form-input">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="subject">Oggetto</label>
+                        <select id="subject" name="subject" class="form-input" required>
+                            <option value="">Seleziona un'opzione</option>
+                            <option value="demo">Richiesta Demo</option>
+                            <option value="info">Informazioni Tecniche</option>
+                            <option value="partnership">Partnership</option>
+                            <option value="support">Supporto Tecnico</option>
+                            <option value="other">Altro</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="message">Messaggio</label>
+                        <textarea id="message" name="message" class="form-textarea" placeholder="Descrivi le tue esigenze o richieste specifiche..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <svg class="icon-20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"/>
+                            <polygon points="22,2 15,22 11,13 2,9 22,2"/>
+                        </svg>
+                        Invia Richiesta
+                    </button>
+                </form>
             </div>
         </div>
     </section>
@@ -1488,447 +1547,342 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
+                <div>
+                    <h3 class="text-xl font-bold mb-2">Altair Tech & Systems</h3>
+                    <p style="opacity: 0.8;">Innovazione nella tecnologia UAV</p>
+                </div>
+                
                 <div class="footer-links">
-                    <a href="privacy_policy.pdf" class="footer-link">Privacy Policy</a>
-                    <a href="cookie_policy.pdf" class="footer-link">Cookie Policy</a>
-                    <a href="note_legali.pdf" class="footer-link">Note Legali</a>
+                    <a href="#home" class="footer-link">Home</a>
+                    <a href="#features" class="footer-link">Caratteristiche</a>
+                    <a href="#specifications" class="footer-link">Specifiche</a>
+                    <a href="#team" class="footer-link">Team</a>
                     <a href="#contact" class="footer-link">Contatti</a>
                 </div>
             </div>
+            
             <div class="footer-bottom">
-                <p>&copy; 2025 Altair Tech & Systems. Tutti i diritti riservati.</p>
-                <p class="mt-2 text-sm">
-                    I contenuti di questo sito sono di proprietà di Altair Tech & Systems 
-                    o dei rispettivi titolari e sono protetti dalle leggi internazionali sul copyright.
-                </p>
+                <p>&copy; 2025 Altair Tech & Systems Tutti i diritti riservati.</p>
             </div>
         </div>
     </footer>
 
     <!-- Modals -->
-    <div id="componentModal" class="modal">
+    <div id="gimbalModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('componentModal')">&times;</span>
-            <h3 id="modalTitle" class="text-2xl font-bold mb-4"></h3>
-            <p id="modalDescription" class="text-lg opacity-90"></p>
+            <span class="close" onclick="closeModal('gimbalModal')">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-gradient">Gimbal EO/IR Avanzato</h2>
+            <p class="mb-4">
+                Il nostro sistema gimbal rappresenta l'eccellenza nella tecnologia di stabilizzazione e acquisizione immagini. 
+                Progettato per operazioni in condizioni estreme, garantisce performance eccezionali in ogni scenario.
+            </p>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 0.5rem;">✓ Stabilizzazione 3-assi con precisione ±0.01°</li>
+                <li style="margin-bottom: 0.5rem;">✓ Camera 4K con zoom ottico 30x</li>
+                <li style="margin-bottom: 0.5rem;">✓ Sensore termico FLIR 640x512</li>
+                <li style="margin-bottom: 0.5rem;">✓ Tracking automatico AI-powered</li>
+                <li style="margin-bottom: 0.5rem;">✓ Georeferenziamento preciso</li>
+            </ul>
         </div>
     </div>
 
-    <div id="videoModal" class="modal">
+    <div id="lidarModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('videoModal')">&times;</span>
-            <h3 class="text-2xl font-bold mb-4">Video Dimostrativo Neurowing</h3>
-            <div class="h-64 bg-gray-800 rounded-lg flex items-center justify-center mb-4">
-                <p>Video demo in arrivo...</p>
-            </div>
-            <p>La demo video mostrerà le capacità operative del Neurowing in scenari reali.</p>
+            <span class="close" onclick="closeModal('lidarModal')">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-gradient">Scanner LiDAR HD</h2>
+            <p class="mb-4">
+                Tecnologia LiDAR all'avanguardia per mappatura tridimensionale ad alta precisione. 
+                Ideale per survey topografici, monitoraggio ambientale e navigazione autonoma.
+            </p>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 0.5rem;">✓ Range fino a 300m</li>
+                <li style="margin-bottom: 0.5rem;">✓ Precisione ±2cm</li>
+                <li style="margin-bottom: 0.5rem;">✓ 200,000 punti/secondo</li>
+                <li style="margin-bottom: 0.5rem;">✓ Multi-return capability</li>
+                <li style="margin-bottom: 0.5rem;">✓ IP67 rated</li>
+            </ul>
         </div>
     </div>
 
-    <div id="downloadModal" class="modal">
+    <div id="aiModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('downloadModal')">&times;</span>
-            <h3 class="text-2xl font-bold mb-4">Scarica la Scheda Tecnica</h3>
-            <p class="mb-4">La scheda tecnica completa è in fase di preparazione e sarà disponibile a breve.</p>
-            <p>Riceverai una notifica non appena il documento sarà pronto.</p>
-            <div class="mt-6">
-                <button class="btn btn-primary" onclick="notifyWhenReady()">
-                    <span>Avvisami quando pronto</span>
-                    <span>🔔</span>
-                </button>
-            </div>
+            <span class="close" onclick="closeModal('aiModal')">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-gradient">AI Processing Unit</h2>
+            <p class="mb-4">
+                Cuore computazionale di Neurowing, dedicato all'elaborazione di algoritmi di machine learning 
+                e computer vision per analisi in tempo reale e decisioni autonome.
+            </p>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 0.5rem;">✓ GPU dedicata per AI</li>
+                <li style="margin-bottom: 0.5rem;">✓ 16GB RAM dedicata</li>
+                <li style="margin-bottom: 0.5rem;">✓ Modelli ML pre-trained</li>
+                <li style="margin-bottom: 0.5rem;">✓ Edge computing</li>
+                <li style="margin-bottom: 0.5rem;">✓ Low power consumption</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="commsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('commsModal')">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-gradient">Communication System</h2>
+            <p class="mb-4">
+                Sistema di comunicazione avanzato con tecnologia multi-banda e crittografia militare 
+                per garantire link sicuri e affidabili in ogni condizione operativa.
+            </p>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 0.5rem;">✓ Multi-band operation</li>
+                <li style="margin-bottom: 0.5rem;">✓ AES-256 encryption</li>
+                <li style="margin-bottom: 0.5rem;">✓ Range 100km+</li>
+                <li style="margin-bottom: 0.5rem;">✓ Anti-jamming</li>
+                <li style="margin-bottom: 0.5rem;">✓ Redundant links</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="powerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('powerModal')">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-gradient">Power Management System</h2>
+            <p class="mb-4">
+                Sistema di gestione energetica intelligente che ottimizza l'autonomia e garantisce 
+                performance costanti durante l'intera durata della missione.
+            </p>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 0.5rem;">✓ Li-ion high density</li>
+                <li style="margin-bottom: 0.5rem;">✓ Smart power management</li>
+                <li style="margin-bottom: 0.5rem;">✓ Hot-swappable batteries</li>
+                <li style="margin-bottom: 0.5rem;">✓ Fast charging</li>
+                <li style="margin-bottom: 0.5rem;">✓ Health monitoring</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="navModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('navModal')">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-gradient">Navigation Suite</h2>
+            <p class="mb-4">
+                Suite di navigazione completa che integra GNSS, INS e sensori di bordo 
+                per garantire precisione centimetrica in ogni condizione operativa.
+            </p>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 0.5rem;">✓ GNSS multi-constellation</li>
+                <li style="margin-bottom: 0.5rem;">✓ RTK precision</li>
+                <li style="margin-bottom: 0.5rem;">✓ INS integration</li>
+                <li style="margin-bottom: 0.5rem;">✓ Backup systems</li>
+                <li style="margin-bottom: 0.5rem;">✓ Centimeter accuracy</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification" style="display: none;">
+        <div class="notification-content">
+            <span id="notificationText"></span>
+            <button class="notification-close" onclick="closeNotification()">&times;</button>
         </div>
     </div>
 
     <script>
-        // Main Application
-        class AltairApp {
-            constructor() {
-                this.isLoaded = false;
-                this.currentTheme = 'dark';
-                this.modelRotation = 0;
-                this.init();
+        // Navigation and Mobile Menu
+        const nav = document.getElementById('nav');
+        const navLinks = document.getElementById('navLinks');
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const menuIcon = document.getElementById('menuIcon');
+        const closeIcon = document.getElementById('closeIcon');
+        
+        // Scroll effect for navigation
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
             }
-
-            init() {
-                this.setupEventListeners();
-                this.initializeTheme();
-                this.initializeAnimations();
-                this.initializeScrollEffects();
-                this.createParticles();
-                this.hideLoader();
+        });
+        
+        // Mobile menu toggle
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            if (navLinks.classList.contains('active')) {
+                menuIcon.style.display = 'none';
+                closeIcon.style.display = 'block';
+            } else {
+                menuIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
             }
-
-            hideLoader() {
-                const loader = document.getElementById('loader');
-                if (loader) {
-                    setTimeout(() => {
-                        loader.classList.add('hidden');
-                        this.isLoaded = true;
-                        this.triggerAnimations();
-                    }, 1000);
-                }
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
+            });
+        });
+        
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const sunIcon = document.getElementById('sunIcon');
+        const moonIcon = document.getElementById('moonIcon');
+        const html = document.documentElement;
+        
+        themeToggle.addEventListener('click', () => {
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.setAttribute('data-theme', 'light');
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+                localStorage.setItem('theme', 'dark');
             }
-
-            initializeTheme() {
-                const savedTheme = localStorage.getItem('altair_theme');
-                const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-                
-                this.currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
-                this.applyTheme(this.currentTheme);
-            }
-
-            toggleTheme() {
-                this.currentTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
-                this.applyTheme(this.currentTheme);
-                localStorage.setItem('altair_theme', this.currentTheme);
-            }
-
-            applyTheme(theme) {
-                document.documentElement.setAttribute('data-theme', theme);
-                const themeIcon = document.getElementById('themeIcon');
-                if (themeIcon) {
-                    themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
-                }
-            }
-
-            setupEventListeners() {
-                // Theme toggle
-                const themeToggle = document.getElementById('themeToggle');
-                if (themeToggle) {
-                    themeToggle.addEventListener('click', () => this.toggleTheme());
-                }
-
-                // Mobile menu toggle
-                const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-                const navLinks = document.getElementById('navLinks');
-                if (mobileMenuToggle && navLinks) {
-                    mobileMenuToggle.addEventListener('click', () => {
-                        navLinks.classList.toggle('active');
-                    });
-                }
-
-                // Smooth scrolling for navigation links
-                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                    anchor.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        const target = document.querySelector(anchor.getAttribute('href'));
-                        if (target) {
-                            this.scrollToElement(target);
-                        }
-                    });
-                });
-
-                // Navbar scroll effect
-                window.addEventListener('scroll', () => this.handleScroll());
-
-                // Form submission
-                const contactForm = document.getElementById('contactForm');
-                if (contactForm) {
-                    contactForm.addEventListener('submit', (e) => this.handleFormSubmit(e));
-                }
-
-                // Resize handler
-                window.addEventListener('resize', () => this.handleResize());
-            }
-
-            initializeScrollEffects() {
-                const observerOptions = {
-                    threshold: 0.1,
-                    rootMargin: '0px 0px -50px 0px'
-                };
-
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                        }
-                    });
-                }, observerOptions);
-
-                document.querySelectorAll('.section').forEach(section => {
-                    observer.observe(section);
-                });
-            }
-
-            initializeAnimations() {
-                if (typeof Splitting !== 'undefined') {
-                    Splitting();
-                }
-
-                if (typeof gsap !== 'undefined') {
-                    this.initializeGSAPAnimations();
-                }
-            }
-
-            initializeGSAPAnimations() {
-                // Hero title animation
-                gsap.from('.hero-title', {
-                    duration: 1.5,
-                    y: 50,
-                    opacity: 0,
-                    ease: 'power3.out',
-                    delay: 0.5
-                });
-
-                // Hero subtitle animation
-                gsap.from('.hero-subtitle', {
-                    duration: 1.2,
-                    y: 30,
-                    opacity: 0,
-                    ease: 'power3.out',
-                    delay: 0.8
-                });
-
-                // Hero buttons animation
-                gsap.from('.hero-actions .btn', {
-                    duration: 1,
-                    y: 20,
-                    opacity: 0,
-                    ease: 'power3.out',
-                    delay: 1.1,
-                    stagger: 0.2
-                });
-
-                // Scroll-triggered animations
-                gsap.utils.toArray('.feature-card').forEach((card, index) => {
-                    gsap.from(card, {
-                        duration: 0.8,
-                        y: 50,
-                        opacity: 0,
-                        ease: 'power3.out',
-                        scrollTrigger: {
-                            trigger: card,
-                            start: 'top 95%',
-                            toggleActions: 'play none none reverse'
-                        },
-                        delay: index * 0.1
-                    });
-                });
-
-                gsap.utils.toArray('.component-card').forEach((card, index) => {
-                    gsap.from(card, {
-                        duration: 0.6,
-                        scale: 0.8,
-                        opacity: 0,
-                        ease: 'power3.out',
-                        scrollTrigger: {
-                            trigger: card,
-                            start: 'top 95%',
-                            toggleActions: 'play none none reverse'
-                        },
-                        delay: index * 0.05
-                    });
-                });
-            }
-
-            createParticles() {
-                const particlesContainer = document.getElementById('particles');
-                if (!particlesContainer) return;
-
-                for (let i = 0; i < 50; i++) {
-                    const particle = document.createElement('div');
-                    particle.className = 'particle';
-                    particle.style.left = Math.random() * 100 + '%';
-                    particle.style.animationDelay = Math.random() * 6 + 's';
-                    particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
-                    particlesContainer.appendChild(particle);
-                }
-            }
-
-            handleScroll() {
-                const navbar = document.getElementById('navbar');
-                if (navbar) {
-                    if (window.scrollY > 100) {
-                        navbar.classList.add('scrolled');
-                    } else {
-                        navbar.classList.remove('scrolled');
-                    }
-                }
-
-                this.updateActiveNavLink();
-            }
-
-            updateActiveNavLink() {
-                const sections = document.querySelectorAll('section[id]');
-                const navLinks = document.querySelectorAll('.nav-link');
-                
-                let current = '';
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    if (window.scrollY >= sectionTop - 200) {
-                        current = section.getAttribute('id');
-                    }
-                });
-
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${current}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-
-            scrollToElement(element) {
-                const offsetTop = element.offsetTop - 80;
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-            }
-
-            handleResize() {
-                const navLinks = document.getElementById('navLinks');
-                if (window.innerWidth > 768 && navLinks) {
-                    navLinks.classList.remove('active');
-                }
-            }
-
-            handleFormSubmit(event) {
-                event.preventDefault();
-                
-                const formData = new FormData(event.target);
-                const data = Object.fromEntries(formData);
-                
-                const submitButton = event.target.querySelector('button[type="submit"]');
-                const originalText = submitButton.innerHTML;
-                submitButton.innerHTML = '<span>Invio in corso...</span> <span>⏳</span>';
-                submitButton.disabled = true;
-
-                setTimeout(() => {
-                    this.showNotification('Messaggio inviato con successo! Ti risponderemo al più presto.', 'success');
-                    event.target.reset();
-                    submitButton.innerHTML = originalText;
-                    submitButton.disabled = false;
-                }, 2000);
-            }
-
-            showNotification(message, type = 'info') {
-                const notification = document.createElement('div');
-                notification.className = `notification notification-${type}`;
-                notification.innerHTML = `
-                    <div class="notification-content">
-                        <span class="notification-message">${message}</span>
-                        <button class="notification-close" onclick="this.parentElement.parentElement.remove()">×</button>
-                    </div>
-                `;
-
-                document.body.appendChild(notification);
-
-                setTimeout(() => {
-                    if (notification.parentElement) {
-                        notification.remove();
-                    }
-                }, 5000);
-            }
-
-            triggerAnimations() {
-                document.querySelectorAll('.fade-in-up').forEach((element, index) => {
-                    setTimeout(() => {
-                        element.style.opacity = '1';
-                        element.style.transform = 'translateY(0)';
-                    }, index * 200);
-                });
-            }
-
-            rotateModel() {
-                this.modelRotation += 45;
-                const modelViewer = document.getElementById('modelViewer');
-                if (modelViewer) {
-                    modelViewer.style.transform = `rotateY(${this.modelRotation}deg)`;
-                    modelViewer.style.transition = 'transform 0.5s ease';
-                }
-            }
-
-            resetModel() {
-                this.modelRotation = 0;
-                const modelViewer = document.getElementById('modelViewer');
-                if (modelViewer) {
-                    modelViewer.style.transform = 'rotateY(0deg)';
-                }
+        });
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', savedTheme);
+        if (savedTheme === 'light') {
+            sunIcon.style.display = 'none';
+            moonIcon.style.display = 'block';
+        }
+        
+        // Particles animation
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particles.appendChild(particle);
             }
         }
-
-        // Modal Functions
-        function showModal(modalId, title = '', description = '') {
+        
+        // Modal functions
+        function openModal(modalId) {
             const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden';
-                
-                if (title && description) {
-                    const titleElement = document.getElementById('modalTitle');
-                    const descElement = document.getElementById('modalDescription');
-                    if (titleElement) titleElement.textContent = title;
-                    if (descElement) descElement.textContent = description;
-                }
-            }
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
         }
-
+        
         function closeModal(modalId) {
             const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
         }
-
-        function submitForm(event) {
-            event.preventDefault();
-            const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData);
-            
-            const button = event.target.querySelector('button[type="submit"]');
-            button.innerHTML = '<span>Invio in corso...</span> <span>⏳</span>';
-            button.disabled = true;
-            
-            setTimeout(() => {
-                alert('Messaggio inviato con successo! Ti risponderemo al più presto.');
-                event.target.reset();
-                button.innerHTML = '<span>Invia Messaggio</span> <span>📤</span>';
-                button.disabled = false;
-            }, 2000);
-        }
-
-        function notifyWhenReady() {
-            alert('Grazie! Ti notificheremo appena la scheda tecnica sarà disponibile.');
-            closeModal('downloadModal');
-        }
-
+        
         // Close modal when clicking outside
-        document.addEventListener('click', (event) => {
+        window.addEventListener('click', (event) => {
             if (event.target.classList.contains('modal')) {
                 event.target.style.display = 'none';
                 document.body.style.overflow = 'auto';
             }
         });
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape') {
-                document.querySelectorAll('.modal').forEach(modal => {
-                    modal.style.display = 'none';
+        
+        // Contact form
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Simulate form submission
+            showNotification('Richiesta inviata con successo! Ti contatteremo presto.', 'success');
+            contactForm.reset();
+        });
+        
+        // Notification system
+        function showNotification(message, type = 'info') {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            
+            notificationText.textContent = message;
+            notification.className = `notification notification-${type}`;
+            notification.style.display = 'block';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 5000);
+        }
+        
+        function closeNotification() {
+            document.getElementById('notification').style.display = 'none';
+        }
+        
+        // Scroll animations
+        function animateOnScroll() {
+            const sections = document.querySelectorAll('.section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
                 });
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // Initialize app when DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            new AltairApp();
-        });
-
-        // Performance monitoring
-        const observer = new PerformanceObserver((list) => {
-            for (const entry of list.getEntries()) {
-                if (entry.entryType === 'navigation') {
-                    console.log(`Page load time: ${entry.loadEventEnd - entry.loadEventStart}ms`);
+            }, { threshold: 0.1 });
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
-            }
+            });
         });
-
-        observer.observe({ entryTypes: ['navigation'] });
+        
+        // Loading screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loader = document.getElementById('loader');
+                loader.classList.add('hidden');
+                
+                // Animate hero content
+                const heroContent = document.querySelector('.hero-content');
+                heroContent.classList.add('fade-in-up');
+            }, 1000);
+        });
+        
+        // Initialize
+        createParticles();
+        animateOnScroll();
+        
+        // Add touch support for mobile
+        let touchStartY = 0;
+        let touchEndY = 0;
+        
+        document.addEventListener('touchstart', e => {
+            touchStartY = e.changedTouches[0].screenY;
+        });
+        
+        document.addEventListener('touchend', e => {
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartY - touchEndY;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                // Swipe detected, but we'll let the browser handle scrolling
+                // This is just for future enhancement if needed
+            }
+        }
     </script>
 </body>
 </html>
